@@ -42,6 +42,10 @@ npm install -g expo-cli
 ```
 brew install watchman
 ```
+7. Install Redux
+```
+npm install --save redux
+```
 
 #### Run project
 
@@ -55,6 +59,10 @@ Start app:
 ```
 expo start
 ```
+
+Open app in IOS Simulator:
+press i at command line
+
 
 ### The Directory Layout  
 <pre>
