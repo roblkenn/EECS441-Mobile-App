@@ -1105,6 +1105,3 @@ Mobile App
 │       └── polyfill.min.js
 └── README.md
 </pre>
-
-### Simple Control Flow
-![image](https://github.com/roblkenn/EECS-441-Starter-App/blob/master/raw/cf.png)
