@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import Header from "./Header";
-import Editor from "./editor/Editor";
+import { Editor } from "./editor";
 import MoreImages from "./moreImages/MoreImages";
 import { Button } from "../3-utils/Buttons";
 
@@ -31,7 +31,6 @@ export default class Main extends Component {
       <View style={styles.container}>
         <Header />
         <Editor updateEditor={this.updateEditor} {...this.state} />
-        <MoreImages changeImage={this.changeImage} />
       </View>
     );
   }

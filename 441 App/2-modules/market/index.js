@@ -8,18 +8,24 @@ export default function Market() {
 
   return (
     <View style={styles.container}>
-      <Header />
       <Text style = {styles.title}>
         Marketplace
       </Text>
       <Text style = {styles.post}>
         John Doe
       </Text>
-      <View style = {styles.price}>
-        <Text style = {styles.post}>
-          10.50
-        </Text>
-      </View>
+      <Text style = {styles.description}>
+        I am a professional photographer from Illinois. I created this preset for portraits. It increases saturation, brightness, and makes photos more attractive. Check out my profile for examples!
+      </Text>
+      <Text style = {styles.post}>
+        John Doe
+      </Text>
+      <Text style = {styles.description}>
+        I am a professional photographer from Illinois. I created this preset for portraits. It increases saturation, brightness, and makes photos more attractive. Check out my profile for examples!
+      </Text>
+      <Text style = {styles.post}>
+        John Doe
+      </Text>
       <Text style = {styles.description}>
         I am a professional photographer from Illinois. I created this preset for portraits. It increases saturation, brightness, and makes photos more attractive. Check out my profile for examples!
       </Text>
@@ -30,10 +36,12 @@ export default function Market() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    padding: 10,
+    paddingTop: 90,
   },
   title: {
-    fontSize: 60,
+    fontSize: 30,
     alignItems: 'center',
     textTransform: 'uppercase',
     letterSpacing: 3,
@@ -46,7 +54,8 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 20,
-    color: colors.black
+    color: colors.black,
+    marginBottom: 20
   },
   price: {
     borderWidth: 1, 

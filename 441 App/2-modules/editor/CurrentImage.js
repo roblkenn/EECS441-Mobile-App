@@ -1,16 +1,23 @@
-import React from 'react'
-import { View, StyleSheet, Image } from 'react-native'
+import React from "react";
+import { View, StyleSheet, Image } from "react-native";
+import { connect } from "react-redux";
 
-export default function CurrentImage ({src}) {
-  return  <Image style={styles.image} source={src}/>
+const select = ({editor}) => ({
+  src: editor.currentImage
+})
+
+function CurrentImage({ src }) {
+  return <Image style={styles.image} source={src} />;
 }
 
+export default connect(select, null)(CurrentImage)
+
 const styles = StyleSheet.create({
-  image : {
+  image: {
     flex: 1,
-    alignSelf: 'stretch',
+    alignSelf: "stretch",
     width: undefined,
     height: undefined,
-    resizeMode: 'contain'
+    resizeMode: "contain"
   }
-})
+});

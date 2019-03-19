@@ -16,7 +16,7 @@ export default function Header () {
 const styles = StyleSheet.create({
   header: {
     backgroundColor: colors.black,
-    // paddingTop: 45,
+    paddingTop: 45,
     paddingBottom: 10,
     alignItems: 'center',
     shadowOffset: { height: 1 },
