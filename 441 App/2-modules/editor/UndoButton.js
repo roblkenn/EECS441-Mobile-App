@@ -1,7 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, StyleSheet } from 'react-native'
 import { UndoIcon, RedoIcon } from '../../3-utils/Icons'
-import colors from '../../0-base/colors'
 
 export function UndoButton ({ onPress }) {
   return (
