@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
 import Header from "./Header";
 import { Editor } from "./editor";
 import MoreImages from "./moreImages/MoreImages";
@@ -30,7 +30,17 @@ export default class Main extends Component {
     return (
       <View style={styles.container}>
         <Header />
-        <Editor updateEditor={this.updateEditor} {...this.state} />
+        {/* <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("MoreImages")}
+        >
+          <Text>Image Select</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate("Market")}
+        >
+          <Text>Market</Text>
+        </TouchableOpacity> */}
+        <Editor />
       </View>
     );
   }

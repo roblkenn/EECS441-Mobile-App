@@ -19,7 +19,8 @@ const initialState = {
   // value shown while editing, before save
   temporaryValue: null,
   // the slider name being used during edit
-  activeSlider: null
+  activeSlider: null,
+  scrollEnabled: true
 };
 
 export default function(state = initialState, action) {
@@ -32,13 +33,15 @@ export default function(state = initialState, action) {
         ...state,
         temporaryValue: null,
         [state.activeSlider]: state.temporaryValue,
-        activeSlider: null
+        activeSlider: null,
+        scrollEnabled: true
       };
     // begins editing process for slider
     case START_EDIT:
       Haptic.impact("light");
       return {
         ...state,
+        scrollEnabled: false,
         activeSlider: payload.activeSlider,
         temporaryValue: state[payload.activeSlider]
       };
@@ -47,6 +50,7 @@ export default function(state = initialState, action) {
       Haptic.impact("light");
       return {
         ...state,
+        scrollEnabled: true,
         temporaryValue: null,
         activeSlider: null
       };
