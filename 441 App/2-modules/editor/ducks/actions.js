@@ -1,4 +1,4 @@
-import { SAVE_EDIT, START_EDIT, CANCEL_EDIT, MOVE_SLIDER, CHANGE_IMAGE } from "./types";
+import { SAVE_EDIT, START_EDIT, CANCEL_EDIT, MOVE_SLIDER, CHANGE_IMAGE, SHOW_HELP, HIDE_HELP } from "./types";
 
 export function doSaveEdit() {
   return {
@@ -37,4 +37,16 @@ export function doChangeImage(image) {
       image
     }
   };
+}
+
+export function doShowHelp() {
+  return {
+    type: SHOW_HELP
+  }
+}
+
+export function doHideHelp() {
+  return {
+    type: HIDE_HELP
+  }
 }

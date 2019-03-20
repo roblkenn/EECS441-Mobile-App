@@ -22,9 +22,9 @@ export function RedoButton ({ onPress }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'rgba(0,0,0, 0.4)',
-    padding: 5,
+    padding: 10,
     paddingLeft: 15,
     paddingRight: 15,
-    marginRight: 5
+    marginRight: 0
   }
 })

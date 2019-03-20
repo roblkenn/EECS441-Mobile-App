@@ -36,7 +36,7 @@ class MoreImages extends Component {
 
   render() {
     return (
-      <View style={{ height: height }}>
+      <View style={{ height: height, paddingTop: 40, backgroundColor: colors.darkGrey }}>
         <ScrollView
           contentContainerStyle={styles.container}
           style={styles.body}

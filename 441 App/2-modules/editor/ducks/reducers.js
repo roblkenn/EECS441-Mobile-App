@@ -3,7 +3,9 @@ import {
   START_EDIT,
   CANCEL_EDIT,
   MOVE_SLIDER,
-  CHANGE_IMAGE
+  CHANGE_IMAGE,
+  SHOW_HELP,
+  HIDE_HELP
 } from "./types";
 import { Haptic } from "expo";
 
@@ -20,7 +22,8 @@ const initialState = {
   temporaryValue: null,
   // the slider name being used during edit
   activeSlider: null,
-  scrollEnabled: true
+  scrollEnabled: true,
+  help: false
 };
 
 export default function(state = initialState, action) {
@@ -28,7 +31,7 @@ export default function(state = initialState, action) {
   switch (type) {
     // overrides one of the slider values
     case SAVE_EDIT:
-      Haptic.impact("heavy");
+      Haptic.impact("medium");
       return {
         ...state,
         temporaryValue: null,
@@ -38,7 +41,6 @@ export default function(state = initialState, action) {
       };
     // begins editing process for slider
     case START_EDIT:
-      Haptic.impact("light");
       return {
         ...state,
         scrollEnabled: false,
@@ -47,7 +49,7 @@ export default function(state = initialState, action) {
       };
     // cancels editing process for slider
     case CANCEL_EDIT:
-      Haptic.impact("light");
+      // Haptic.impact("light");
       return {
         ...state,
         scrollEnabled: true,
@@ -65,6 +67,18 @@ export default function(state = initialState, action) {
       return {
         ...state,
         currentImage: payload.image
+      };
+    case SHOW_HELP:
+      return {
+        ...state,
+        help: true,
+        scrollEnabled: false
+      };
+    case HIDE_HELP:
+      return {
+        ...state,
+        help: false,
+        scrollEnabled: true
       };
     default:
       return state;

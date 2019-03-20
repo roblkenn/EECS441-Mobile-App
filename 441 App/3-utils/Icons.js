@@ -44,12 +44,16 @@ export function DragIcon (props) {
   return <AntDesign style={styles.dragIcon} name='minus' size={40} {...props} />
 }
 
+export function QuestionIcon (props) {
+  return <FontAwesome style={styles.question} name='question-circle' size={40} {...props} />
+}
+
 export function UndoIcon (props) {
-  return <Ionicons name='ios-arrow-round-back' size={30} color='white' {...props}/>
+  return <EvilIcons name='undo' size={30} color='white' {...props}/>
 }
 
 export function RedoIcon (props) {
-  return <Ionicons name='ios-arrow-round-forward' size={30} color='white' {...props}/>
+  return <EvilIcons name='redo' size={30} color='white' {...props}/>
 }
 const styles = StyleSheet.create({
   cancel: {
@@ -60,5 +64,8 @@ const styles = StyleSheet.create({
   },
   dragIcon: {
     color: 'white',
+  },
+  question: {
+    color: 'grey'
   }
 })
