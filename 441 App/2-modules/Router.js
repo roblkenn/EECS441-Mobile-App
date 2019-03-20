@@ -27,8 +27,6 @@ class Router extends Component {
           horizontal={false}
           scrollEnabled={this.props.scrollEnabled}
           scrollsToTop={true}
-          // dotColor="rgba(0,0,0,0)"
-          // activeDotColor="rgba(0,0,0,0)"
         >
           <Main />
           <Settings />

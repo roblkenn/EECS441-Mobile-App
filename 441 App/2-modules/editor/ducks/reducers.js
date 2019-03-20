@@ -49,7 +49,6 @@ export default function(state = initialState, action) {
       };
     // cancels editing process for slider
     case CANCEL_EDIT:
-      // Haptic.impact("light");
       return {
         ...state,
         scrollEnabled: true,

@@ -11,7 +11,6 @@ const actions = {
 const select = ({editor}) => ({
   hide: !editor.activeSlider,
   value: editor.temporaryValue,
-  activeSlider: editor.activeSlider
 });
 
 function ActiveEditor({ value, hide, moveSlider }) {

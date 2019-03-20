@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
-import { doShowHelp, doHideHelp } from "./editor";
+import { doHideHelp } from "./editor";
 import { connect } from "react-redux";
 
 const select = ({ editor }) => ({
