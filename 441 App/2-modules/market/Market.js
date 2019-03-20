@@ -1,51 +1,40 @@
-import React, {Component} from 'react'
-import { View, StyleSheet, Text } from 'react-native'
-import Header from "../Header.js";
-import colors from '../../0-base/colors'
-import photo from "../../assets/photos/camel.jpg"
+import React, { Component } from "react";
+import { View, StyleSheet, Text } from "react-native";
+import colors from "../../0-base/colors";
+import { connect } from "react-redux";
 
-export default function Market() {
+const select = ({ market }) => ({
+  products: market.products
+});
 
+function Market({ products }) {
   return (
     <View style={styles.container}>
-      <Text style = {styles.title}>
-        Marketplace
-      </Text>
-      <Text style = {styles.post}>
-        John Doe
-      </Text>
-      <Text style = {styles.description}>
-        I am a professional photographer from Illinois. I created this preset for portraits. It increases saturation, brightness, and makes photos more attractive. Check out my profile for examples!
-      </Text>
-      <Text style = {styles.post}>
-        John Doe
-      </Text>
-      <Text style = {styles.description}>
-        I am a professional photographer from Illinois. I created this preset for portraits. It increases saturation, brightness, and makes photos more attractive. Check out my profile for examples!
-      </Text>
-      <Text style = {styles.post}>
-        John Doe
-      </Text>
-      <Text style = {styles.description}>
-        I am a professional photographer from Illinois. I created this preset for portraits. It increases saturation, brightness, and makes photos more attractive. Check out my profile for examples!
-      </Text>
+      <Text style={styles.title}>Marketplace</Text>
+      {products.map(product => (
+        <View key={product.title}>
+          <Text style={styles.post}>{product.title} by {product.username}</Text>
+          <Text style={styles.description}>{product.description}</Text>
+        </View>
+      ))}
     </View>
-  )
+  );
 }
 
+export default connect(select)(Market);
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
-    paddingTop: 90,
+    paddingTop: 90
   },
   title: {
     fontSize: 30,
-    alignItems: 'center',
-    textTransform: 'uppercase',
+    alignItems: "center",
+    textTransform: "uppercase",
     letterSpacing: 3,
-    color: 'orange',
+    color: "orange"
   },
   post: {
     fontSize: 30,
@@ -58,12 +47,12 @@ const styles = StyleSheet.create({
     marginBottom: 20
   },
   price: {
-    borderWidth: 1, 
-    position: 'absolute',
+    borderWidth: 1,
+    position: "absolute",
     right: 30,
     top: 220,
     padding: 10,
-    backgroundColor: 'orange',
+    backgroundColor: "orange",
     borderColor: colors.offWhite
   }
-})
+});
