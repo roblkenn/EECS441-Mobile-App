@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Main from "./Main";
 import { Market } from "./market";
-import Swiper from "./react-native-swiper";
+import Swiper from "../3-utils/react-native-swiper";
 import MoreImages from "./moreImages/MoreImages";
 import { connect } from "react-redux";
 import { Settings } from "./settings/Settings";
