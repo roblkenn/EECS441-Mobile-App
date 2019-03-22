@@ -19,6 +19,7 @@ class Router extends Component {
         bounces={true}
         scrollEnabled={this.props.scrollEnabled}
         scrollsToTop={true}
+        showsPagination={this.props.scrollEnabled}
       >
         <MoreImages />
         <Swiper
@@ -27,6 +28,7 @@ class Router extends Component {
           horizontal={false}
           scrollEnabled={this.props.scrollEnabled}
           scrollsToTop={true}
+          showsPagination={this.props.scrollEnabled}
         >
           <Main />
           <Settings />

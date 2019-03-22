@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Slider } from "react-native";
 import colors from "../../0-base/colors";
 import { connect } from "react-redux";
 import { doMoveSlider } from "./ducks";
+import { Haptic } from "expo";
 
 const actions = {
   moveSlider: doMoveSlider

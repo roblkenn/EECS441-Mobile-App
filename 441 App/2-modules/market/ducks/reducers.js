@@ -15,6 +15,31 @@ const initialState = {
       title: 'Flowers',
       description: 'Really good preset for flowers',
     },
+    {
+      username: 'jamal412',
+      title: 'Apple',
+      description: 'Really good preset for flowers',
+    },
+    {
+      username: 'jamal412',
+      title: 'Orange',
+      description: 'Really good preset for flowers',
+    },
+    {
+      username: 'jamal412',
+      title: 'asd',
+      description: 'Really good preset for flowers',
+    },
+    {
+      username: 'jamal412',
+      title: 'fafa',
+      description: 'Really good preset for flowers',
+    },
+    {
+      username: 'jamal412',
+      title: 'asdf',
+      description: 'Really good preset for flowers',
+    },
   ],
 };
 

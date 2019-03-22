@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Surface } from "gl-react-expo";
 import { Shaders, Node, GLSL } from "gl-react";
 import { HueRotate } from "gl-react-hue-rotate";
+import { Tint } from "react-native-color-matrix-image-filters";
 
 const select = ({ editor }) => ({
   src: editor.currentImage,
@@ -41,19 +42,11 @@ const Saturate = ({ contrast, saturation, brightness, children }) => (
 );
 
 function CurrentImage({ src, ...settings }) {
-  // return (
-  //   <Surface style={styles.container}>
-  //     <HueRotate hue={4}>{{ uri: "https://i.imgur.com/uTP9Xfr.jpg" }}</HueRotate>
-  //   </Surface>
-  // );
-  // return (
-  //   <Surface style={styles.container}>
-  //     <Saturate {...settings}>
-  //     {{ image: "https://i.imgur.com/uTP9Xfr.jpg" }}
-  //     </Saturate>
-  //   </Surface>
-  // );
-  return <Image style={styles.image} source={src} />;
+  return (
+    <Tint amount={1.25}>
+      <Image style={styles.image} source={src} />
+    </Tint>
+  );
 }
 
 export default connect(
