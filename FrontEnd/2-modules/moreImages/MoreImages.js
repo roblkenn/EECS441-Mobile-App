@@ -54,7 +54,7 @@ class MoreImages extends Component {
           scrollEnabled={true}
         >
           {this.state.images.map(({ node }, index) => {
-            if (node.group_name !== "Camera Roll") return null;
+            // if (node.group_name !== "Camera Roll") return null;
             return (
               <ImagePreview
                 key={index}
