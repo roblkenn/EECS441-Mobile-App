@@ -5,8 +5,7 @@ import {
   StyleSheet,
   ScrollView,
   Dimensions,
-  CameraRoll,
-  TouchableHighlight
+  CameraRoll
 } from "react-native";
 import colors from "../../0-base/colors";
 import ImagePreview from "./ImagePreview";
@@ -23,7 +22,7 @@ class MoreImages extends Component {
     super(props);
     this.state = {
       images: [],
-      numImagesToShow: 50
+      numImagesToShow: 100
     };
   }
 
@@ -73,50 +72,6 @@ export default connect(
   null,
   actions
 )(MoreImages);
-
-// // Body of sliding panel
-// export default class MoreImages extends Component {
-//   constructor (props) {
-//     super(props)
-//     this.state = {
-//       images: [],
-//       numImagesToShow: 50
-//     }
-//     this.handlePress = this.handlePress.bind(this)
-//   }
-//   componentDidMount () {
-//     let { numImagesToShow } = this.state
-//     CameraRoll.getPhotos({ first: numImagesToShow }).then(r => {
-//       this.setState({ images: r.edges })
-//     })
-//   }
-
-//   handlePress (image) {
-//     this.props.changeImage(image)
-//     this.props.simulateClick()
-//   }
-
-//   render () {
-//     let { images } = this.state
-//     return (
-//       <View style={{height: height}}>
-//         <ScrollView
-//           contentContainerStyle={styles.container}
-//           style={styles.body}
-//           scrollEnabled={true}
-//         >
-//           {images.map(({ node }) => (
-//             <ImagePreview
-//               key={node.image.filename}
-//               onPress={this.handlePress}
-//               image={node.image}
-//             />
-//           ))}
-//         </ScrollView>
-//       </View>
-//     )
-//   }
-// }
 
 const styles = StyleSheet.create({
   container: {
