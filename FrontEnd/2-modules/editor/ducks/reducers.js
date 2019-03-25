@@ -21,6 +21,9 @@ const initialState = {
   temporaryValue: null,
   // the slider name being used during edit
   activeSlider: null,
+  minSliderBound: null,
+  maxSliderBound: null,
+  sliderStep: null,
   scrollEnabled: true,
   help: false
 };
@@ -44,7 +47,10 @@ export default function(state = initialState, action) {
         ...state,
         scrollEnabled: false,
         activeSlider: payload.activeSlider,
-        temporaryValue: state[payload.activeSlider]
+        temporaryValue: state[payload.activeSlider],
+        minSliderBound: payload.minSliderBound,
+        maxSliderBound: payload.maxSliderBound,
+        sliderStep: payload.sliderStep
       };
     // cancels editing process for slider
     case CANCEL_EDIT:

@@ -1,4 +1,12 @@
-import { SAVE_EDIT, START_EDIT, CANCEL_EDIT, MOVE_SLIDER, CHANGE_IMAGE, SHOW_HELP, HIDE_HELP } from "./types";
+import {
+  SAVE_EDIT,
+  START_EDIT,
+  CANCEL_EDIT,
+  MOVE_SLIDER,
+  CHANGE_IMAGE,
+  SHOW_HELP,
+  HIDE_HELP
+} from "./types";
 
 export function doSaveEdit() {
   return {
@@ -7,10 +15,25 @@ export function doSaveEdit() {
 }
 
 export function doStartEdit(sliderName) {
+  let minSliderBound, maxSliderBound;
+  switch (sliderName) {
+    case "temperature":
+      [minSliderBound, maxSliderBound, sliderStep] = [-1, 1, 0.1];
+      break;
+    case "contrast":
+    case "saturation":
+    case "brightness":
+      [minSliderBound, maxSliderBound, sliderStep] = [0, 2, 0.1];
+      break;
+  }
+
   return {
     type: START_EDIT,
     payload: {
-      activeSlider: sliderName
+      activeSlider: sliderName,
+      minSliderBound,
+      maxSliderBound,
+      sliderStep
     }
   };
 }
@@ -42,11 +65,11 @@ export function doChangeImage(image) {
 export function doShowHelp() {
   return {
     type: SHOW_HELP
-  }
+  };
 }
 
 export function doHideHelp() {
   return {
     type: HIDE_HELP
-  }
+  };
 }

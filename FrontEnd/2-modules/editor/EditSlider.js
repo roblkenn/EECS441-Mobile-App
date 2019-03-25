@@ -12,20 +12,23 @@ const actions = {
 const select = ({editor}) => ({
   hide: !editor.activeSlider,
   value: editor.temporaryValue,
+  step: editor.sliderStep,
+  max: editor.maxSliderBound,
+  min: editor.minSliderBound
 });
 
-function ActiveEditor({ value, hide, moveSlider }) {
+function ActiveEditor({ value, hide, moveSlider, step, min, max }) {
   if (hide) return null;
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.number}>{Math.round(value * 10)}</Text>
+        <Text style={styles.number}>{Math.round(value * 100)}</Text>
       </View>
       <Slider
         value={value}
-        minimumValue={-10}
-        maximumValue={10}
-        step={0.1}
+        minimumValue={min}
+        maximumValue={max}
+        step={step}
         style={styles.slider}
         minimumTrackTintColor={"orange"}
         onValueChange={moveSlider}
