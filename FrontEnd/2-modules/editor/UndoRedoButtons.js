@@ -3,24 +3,30 @@ import { UndoButton, RedoButton } from "./UndoButton";
 // import { Haptic } from "expo";
 import { connect } from "react-redux";
 import { View, StyleSheet } from "react-native";
+import { doUndo } from "./ducks/actions";
 
 const select = ({editor}) => ({
-  hide: editor.activeSlider
+  hide: editor.activeSlider,
+  showUndo: editor.history.length
 })
 
-function UndoRedoButtons({ hide }) {
+const actions = {
+  handleUndo: doUndo
+}
+
+function UndoRedoButtons({ hide, handleUndo, showUndo }) {
   if (hide) return null;
   return (
     <View style={styles.container}>
-      <UndoButton onPress={() => null} />
-      <RedoButton onPress={() => null} />
+      {showUndo > 0 && <UndoButton onPress={handleUndo} /> }
+      {/* <RedoButton onPress={() => null} /> */}
     </View>
   );
 }
 
 export default connect(
   select,
-  null
+  actions
 )(UndoRedoButtons);
 
 const styles = StyleSheet.create({

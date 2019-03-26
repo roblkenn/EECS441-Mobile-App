@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { doStartLoadImages } from "../moreImages/ducks";
 import ViewShot from "react-native-view-shot";
+import Haptic from "react-native-haptic-feedback";
 
 import { Image, Text, View, TouchableOpacity, CameraRoll } from "react-native";
 import { DownloadIcon } from "../../3-utils/Icons";
@@ -20,6 +21,7 @@ class SaveableImage extends Component {
   }
 
   saveImageToCameraRoll() {
+    Haptic.trigger("impactHeavy", true);
     this.refs.viewShot
       .capture()
       .then(uri => {

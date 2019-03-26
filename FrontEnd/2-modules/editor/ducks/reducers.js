@@ -5,8 +5,11 @@ import {
   MOVE_SLIDER,
   CHANGE_IMAGE,
   SHOW_HELP,
-  HIDE_HELP
+  HIDE_HELP,
+  UNDO
 } from "./types";
+
+import Haptic from "react-native-haptic-feedback";
 
 const initialState = {
   // image being shown
@@ -20,12 +23,17 @@ const initialState = {
   // value shown while editing, before save
   temporaryValue: null,
   // the slider name being used during edit
+  // and slider specifications
   activeSlider: null,
   minSliderBound: null,
   maxSliderBound: null,
   sliderStep: null,
+  // disables scrolling
   scrollEnabled: true,
-  help: false
+  // shows help page
+  help: false,
+  // edit history
+  history: []
 };
 
 export default function(state = initialState, action) {
@@ -33,13 +41,20 @@ export default function(state = initialState, action) {
   switch (type) {
     // overrides one of the slider values
     case SAVE_EDIT:
-      // Haptic.impact("medium");
+      Haptic.trigger("impactLight", true);
       return {
         ...state,
         temporaryValue: null,
         [state.activeSlider]: state.temporaryValue,
         activeSlider: null,
-        scrollEnabled: true
+        scrollEnabled: true,
+        history: [
+          ...state.history,
+          {
+            sliderName: state.activeSlider,
+            previousValue: state[state.activeSlider]
+          }
+        ]
       };
     // begins editing process for slider
     case START_EDIT:
@@ -88,6 +103,13 @@ export default function(state = initialState, action) {
         ...state,
         help: false,
         scrollEnabled: true
+      };
+    case UNDO:
+      let { sliderName, previousValue } = state.history.slice(-1)[0];
+      return {
+        ...state,
+        history: state.history.slice(0, -1),
+        [sliderName]: previousValue
       };
     default:
       return state;

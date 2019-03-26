@@ -90,7 +90,7 @@ function CurrentImage({
           )}
           {!src && (
             <View>
-              <WhiteText>swipe right to import an imagea</WhiteText>
+              <WhiteText>swipe right to import an image</WhiteText>
             </View>
           )}
         </View>
@@ -100,8 +100,8 @@ function CurrentImage({
           onPress={exportImage.callback}
           style={{
             position: "absolute",
-            right: 0,
-            bottom: 0,
+            left: 0,
+            top: 0,
             backgroundColor: "rgba(0,0,0, 0.4)",
             paddingVertical: 10,
             paddingHorizontal: 16

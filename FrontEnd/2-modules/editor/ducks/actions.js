@@ -5,10 +5,11 @@ import {
   MOVE_SLIDER,
   CHANGE_IMAGE,
   SHOW_HELP,
-  HIDE_HELP
+  HIDE_HELP,
+  UNDO
 } from "./types";
-import { CameraRoll } from "react-native";
-import { doFinishLoadImages } from "../../moreImages/ducks";
+import Haptic from "react-native-haptic-feedback";
+
 
 export function doSaveEdit() {
   return {
@@ -56,6 +57,7 @@ export function doMoveSlider(value) {
 }
 
 export function doChangeImage(image) {
+  Haptic.trigger("impactLight", true);
   return {
     type: CHANGE_IMAGE,
     payload: {
@@ -74,4 +76,10 @@ export function doHideHelp() {
   return {
     type: HIDE_HELP
   };
+}
+
+export function doUndo() {
+  return {
+    type: UNDO
+  }
 }
