@@ -6,7 +6,9 @@ import {
   CHANGE_IMAGE,
   SHOW_HELP,
   HIDE_HELP,
-  UNDO
+  UNDO,
+  STOP_COMPARE,
+  START_COMPARE
 } from "./types";
 
 import Haptic from "react-native-haptic-feedback";
@@ -33,7 +35,16 @@ const initialState = {
   // shows help page
   help: false,
   // edit history
-  history: []
+  history: [],
+  // used to remember the original values
+  // when compare overwrites them
+  copyOfSettingsForCompare: {
+    contrast: null,
+    brightness: null,
+    highlights: null,
+    saturation: null,
+    temperature: null
+  }
 };
 
 export default function(state = initialState, action) {
@@ -90,7 +101,8 @@ export default function(state = initialState, action) {
         brightness: 1,
         highlights: 0,
         saturation: 1,
-        temperature: 0
+        temperature: 0,
+        history: []
       };
     case SHOW_HELP:
       return {
@@ -111,6 +123,28 @@ export default function(state = initialState, action) {
         history: state.history.slice(0, -1),
         [sliderName]: previousValue
       };
+    case START_COMPARE:
+      return {
+        ...state,
+        copyOfSettingsForCompare: {
+          contrast: state.contrast,
+          brightness: state.brightness,
+          highlights: state.highlights,
+          saturation: state.saturation,
+          temperature: state.temperature
+        },
+        contrast: 1,
+        brightness: 1,
+        highlights: 0,
+        saturation: 1,
+        temperature: 0
+      };
+    case STOP_COMPARE:
+      return {
+        ...state,
+        ...state.copyOfSettingsForCompare,
+        copyOfSettingsForCompare: {}
+      }
     default:
       return state;
   }

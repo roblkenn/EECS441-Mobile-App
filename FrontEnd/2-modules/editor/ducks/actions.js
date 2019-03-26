@@ -6,7 +6,9 @@ import {
   CHANGE_IMAGE,
   SHOW_HELP,
   HIDE_HELP,
-  UNDO
+  UNDO,
+  START_COMPARE,
+  STOP_COMPARE
 } from "./types";
 import Haptic from "react-native-haptic-feedback";
 
@@ -21,12 +23,12 @@ export function doStartEdit(sliderName) {
   let minSliderBound, maxSliderBound;
   switch (sliderName) {
     case "temperature":
-      [minSliderBound, maxSliderBound, sliderStep] = [-1, 1, 0.1];
+      [minSliderBound, maxSliderBound, sliderStep] = [-1, 1, 0.01];
       break;
     case "contrast":
     case "saturation":
     case "brightness":
-      [minSliderBound, maxSliderBound, sliderStep] = [0, 2, 0.1];
+      [minSliderBound, maxSliderBound, sliderStep] = [0, 2, 0.01];
       break;
   }
 
@@ -81,5 +83,17 @@ export function doHideHelp() {
 export function doUndo() {
   return {
     type: UNDO
+  }
+}
+
+export function doStartCompare() {
+  return {
+    type: START_COMPARE
+  }
+}
+
+export function doStopCompare() {
+  return {
+    type: STOP_COMPARE
   }
 }

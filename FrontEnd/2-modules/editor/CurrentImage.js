@@ -17,7 +17,8 @@ import {
 } from "react-native-color-matrix-image-filters";
 import { WhiteText } from "../../3-utils/Text";
 import SaveableImage from "./SaveableImage";
-import { DownloadIcon } from "../../3-utils/Icons";
+import { DownloadIcon, CompareIcon } from "../../3-utils/Icons";
+import { doStartCompare, doStopCompare } from "./ducks/actions";
 
 const select = ({ editor }) => ({
   src: editor.currentImage,
@@ -26,8 +27,14 @@ const select = ({ editor }) => ({
   brightnessValue: editor.brightness,
   saturationValue: editor.saturation,
   temporaryValue: editor.temporaryValue,
-  activeSlider: editor.activeSlider
+  activeSlider: editor.activeSlider,
+  showCompare: editor.history.length > 0
 });
+
+const actions = {
+  startCompare: doStartCompare,
+  stopCompare: doStopCompare
+}
 
 function CurrentImage({
   src,
@@ -36,7 +43,10 @@ function CurrentImage({
   temperatureValue,
   brightnessValue,
   activeSlider,
-  temporaryValue
+  temporaryValue,
+  showCompare,
+  startCompare,
+  stopCompare
 }) {
   // determines whether to preview an edit value
   // or use the saved one
@@ -102,12 +112,28 @@ function CurrentImage({
             position: "absolute",
             left: 0,
             top: 0,
-            backgroundColor: "rgba(0,0,0, 0.4)",
+            backgroundColor: "rgb(255,165,0)",
             paddingVertical: 10,
             paddingHorizontal: 16
           }}
         >
           <DownloadIcon style={{ color: "white" }} />
+        </TouchableOpacity>
+      )}
+      {showCompare && (
+        <TouchableOpacity
+          onPressIn={startCompare}
+          onPressOut={stopCompare}
+          style={{
+            position: "absolute",
+            right: 0,
+            top: 0,
+            backgroundColor: "rgba(0,0,0,0.4)",
+            paddingVertical: 10,
+            paddingHorizontal: 16
+          }}
+        >
+          <CompareIcon style={{ color: "white" }} />
         </TouchableOpacity>
       )}
     </View>
@@ -116,7 +142,7 @@ function CurrentImage({
 
 export default connect(
   select,
-  null
+  actions
 )(CurrentImage);
 
 const styles = StyleSheet.create({

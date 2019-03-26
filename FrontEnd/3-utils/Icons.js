@@ -45,6 +45,10 @@ export function DownloadIcon (props) {
   return <Ionicons {...iconProps} name='ios-save' size={24} {...props} />
 }
 
+export function CompareIcon (props) {
+  return <MaterialIcons {...iconProps} name='compare' size={24} {...props} />
+}
+
 // export function DragIcon (props) {
 //   return <AntDesign style={styles.dragIcon} name='minus' size={40} {...props} />
 // }
