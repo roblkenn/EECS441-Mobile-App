@@ -7,6 +7,8 @@ import {
   SHOW_HELP,
   HIDE_HELP
 } from "./types";
+import { CameraRoll } from "react-native";
+import { doFinishLoadImages } from "../../moreImages/ducks";
 
 export function doSaveEdit() {
   return {

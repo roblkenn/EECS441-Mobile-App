@@ -2,14 +2,11 @@ import React, { Component, useState, useEffect } from "react";
 import {
   StyleSheet,
   Image,
-  Text,
   View,
-  TouchableOpacity,
-  CameraRoll,
-  Dimensions
+  Dimensions,
+  TouchableOpacity
 } from "react-native";
 import { connect } from "react-redux";
-import ViewShot from "react-native-view-shot";
 import {
   contrast,
   saturate,
@@ -19,6 +16,8 @@ import {
   brightness
 } from "react-native-color-matrix-image-filters";
 import { WhiteText } from "../../3-utils/Text";
+import SaveableImage from "./SaveableImage";
+import { DownloadIcon } from "../../3-utils/Icons";
 
 const select = ({ editor }) => ({
   src: editor.currentImage,
@@ -48,23 +47,25 @@ function CurrentImage({
   // image dimension hooks
   let [imageWidth, setImageWidth] = useState(null);
   let [imageHeight, setImageHeight] = useState(null);
+  let [exportImage, setExportImage] = useState({ callback: null });
 
   // determines size of image depending on if its longest
   // edge is its width or height
   useEffect(() => {
-    src && Image.getSize(src, (width, height) => {
-      if (width > height) {
-        const windowWidth = Dimensions.get("window").width;
-        const derivedHeight = (windowWidth / width) * height;
-        setImageHeight(derivedHeight);
-        setImageWidth(windowWidth);
-      } else {
-        const windowHeight = 450;
-        const derivedWidth = (windowHeight / height) * width;
-        setImageHeight(windowHeight);
-        setImageWidth(derivedWidth);
-      }
-    });
+    src &&
+      Image.getSize(src, (width, height) => {
+        if (width > height) {
+          const windowWidth = Dimensions.get("window").width;
+          const derivedHeight = (windowWidth / width) * height;
+          setImageHeight(derivedHeight);
+          setImageWidth(windowWidth);
+        } else {
+          const windowHeight = 450;
+          const derivedWidth = (windowHeight / height) * width;
+          setImageHeight(windowHeight);
+          setImageWidth(derivedWidth);
+        }
+      });
   }, [src]);
 
   return (
@@ -84,6 +85,7 @@ function CurrentImage({
               src={src}
               imageWidth={imageWidth}
               imageHeight={imageHeight}
+              onExport={setExportImage}
             />
           )}
           {!src && (
@@ -93,48 +95,23 @@ function CurrentImage({
           )}
         </View>
       </ColorMatrix>
+      {exportImage.callback && (
+        <TouchableOpacity
+          onPress={exportImage.callback}
+          style={{
+            position: "absolute",
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0,0,0, 0.4)",
+            paddingVertical: 10,
+            paddingHorizontal: 16
+          }}
+        >
+          <DownloadIcon style={{ color: "white" }} />
+        </TouchableOpacity>
+      )}
     </View>
   );
-}
-
-class SaveableImage extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <View
-        style={{ width: this.props.imageWidth, height: this.props.imageHeight }}
-      >
-        <ViewShot
-          style={{
-            width: this.props.imageWidth,
-            height: this.props.imageHeight
-          }}
-          ref="viewShot"
-          options={{ format: "jpg", quality: 0.9 }}
-        >
-          <Image
-            style={{
-              width: this.props.imageWidth,
-              height: this.props.imageHeight
-            }}
-            source={this.props.src}
-          />
-        </ViewShot>
-        <TouchableOpacity
-          onPress={() =>
-            this.refs.viewShot.capture().then(uri => {
-              CameraRoll.saveToCameraRoll(uri);
-            })
-          }
-          style={{ position: "absolute", right: 0 }}
-        >
-          <Text>Export</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
 }
 
 export default connect(

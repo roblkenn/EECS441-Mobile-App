@@ -18,7 +18,7 @@ export function Button ({ children, onPress, weight }) {
 const styles = StyleSheet.create({
   button: {
     height: 60,
-    width: '20%',
+    width: '25%',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.black

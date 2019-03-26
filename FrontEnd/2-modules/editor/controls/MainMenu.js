@@ -28,9 +28,6 @@ function MainMenu({ startEdit }) {
       <Button onPress={() => startEdit("temperature")}>
         <TemperatureIcon />
       </Button>
-      <Button onPress={() => startEdit("highlights")}>
-        <HighlightIcon />
-      </Button>
       <Button onPress={() => startEdit("saturation")}>
         <SaturationIcon />
       </Button>
