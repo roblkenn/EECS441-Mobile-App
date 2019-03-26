@@ -21,7 +21,7 @@ const actions = {
   loadImages: doStartLoadImages
 };
 
-function MoreImages({images, loadImages, changeImage}) {
+function MoreImages({images, loadImages, changeImage, slideToMainView}) {
   useEffect(loadImages, [])
   return (
     <View
@@ -37,11 +37,13 @@ function MoreImages({images, loadImages, changeImage}) {
         scrollEnabled={true}
       >
         {images.map(({ node }, index) => {
-          // if (node.group_name !== "Camera Roll") return null;
           return (
             <ImagePreview
               key={index}
-              onPress={changeImage}
+              onPress={image => {
+                changeImage(image)
+                slideToMainView()
+              }}
               image={node.image}
             />
           );

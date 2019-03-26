@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Text} from 'react-native'
+import { Text } from "react-native";
 import Main from "./Main";
 import { Market } from "./market";
 import Swiper from "../3-utils/react-native-swiper";
@@ -12,6 +12,15 @@ const select = ({ editor }) => ({
 });
 
 class Router extends Component {
+  constructor(props) {
+    super(props)
+    this.slideToMainView = this.slideToMainView.bind(this)
+  }
+
+  slideToMainView() {
+    this._swiper.scrollBy(1)
+  }
+
   render() {
     return (
       <Swiper
@@ -21,8 +30,9 @@ class Router extends Component {
         scrollEnabled={this.props.scrollEnabled}
         scrollsToTop={true}
         showsPagination={this.props.scrollEnabled}
+        ref={(swiper) => {this._swiper = swiper;}}
       >
-        <MoreImages />
+        <MoreImages slideToMainView={this.slideToMainView} />
         <Swiper
           loop={false}
           index={0}
