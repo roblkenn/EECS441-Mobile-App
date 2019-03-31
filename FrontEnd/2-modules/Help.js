@@ -15,9 +15,16 @@ function Help({ help, hideHelp }) {
   if (!help) return null;
   return (
     <TouchableOpacity onPress={hideHelp} style={styles.container}>
-      <Text style={{ color: "white" }}>Swipe Left to load an image</Text>
-      <Text style={{ color: "white" }}>Swipe Right for the marketplace</Text>
-      <Text style={{ color: "white" }}>Swipe Up for settings</Text>
+      <Text style={styles.title}>Help</Text>
+      <Text style={styles.description}>
+        Three simple steps to use Styles!
+      </Text>
+      <Text style={styles.name}>Step 1:</Text>
+      <Text style={styles.description}>Swipe Left to load an image</Text>
+      <Text style={styles.name}>Step 2:</Text>
+      <Text style={styles.description}>Swipe Right for the marketplace</Text>
+      <Text style={styles.name}>Step 3:</Text>
+      <Text style={styles.description}>Swipe Up for settings</Text>
     </TouchableOpacity>
   );
 }
@@ -37,5 +44,21 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     alignItems: "center"
-  }
+  },
+  title: {
+    fontSize: 36,
+    color: "white",
+    marginBottom: 20,
+    marginTop: 20,
+  },
+  description: {
+    color: "white",
+    marginBottom: 10
+  },
+  name: {
+    fontSize: 20,
+    color: 'orange',
+    marginBottom: 10,
+    marginTop: 10
+  },
 });
