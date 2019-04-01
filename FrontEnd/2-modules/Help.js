@@ -19,12 +19,12 @@ function Help({ help, hideHelp }) {
       <Text style={styles.description}>
         Three simple steps to use Styles!
       </Text>
-      <Text style={styles.name}>Step 1:</Text>
-      <Text style={styles.description}>Swipe Left to load an image</Text>
-      <Text style={styles.name}>Step 2:</Text>
-      <Text style={styles.description}>Swipe Right for the marketplace</Text>
-      <Text style={styles.name}>Step 3:</Text>
-      <Text style={styles.description}>Swipe Up for settings</Text>
+      <Text style={styles.name}>Edit Images:</Text>
+      <Text style={styles.description}>Swipe Left to choose an image. Using our main screen, you can custom edit the photo, or apply your selected model.</Text>
+      <Text style={styles.name}>Browse Marketplace:</Text>
+      <Text style={styles.description}>Swipe Right for the marketplace to browse and purchase other users' presets.</Text>
+      <Text style={styles.name}>Upload/Edit your model:</Text>
+      <Text style={styles.description}>Swipe Up for setting to view current model, select a new model, or post your model for sale.</Text>
     </TouchableOpacity>
   );
 }
@@ -42,8 +42,6 @@ const styles = StyleSheet.create({
     zIndex: 200,
     height: "100%",
     width: "100%",
-    justifyContent: "center",
-    alignItems: "center"
   },
   title: {
     fontSize: 36,
@@ -53,7 +51,7 @@ const styles = StyleSheet.create({
   },
   description: {
     color: "white",
-    marginBottom: 10
+    marginBottom: 10,
   },
   name: {
     fontSize: 20,
