@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Text, TextInput, TouchableOpacity, Switch, ScrollView, Dimensions } from "react-native";
+import { Alert, Button, View, StyleSheet, Text, TextInput, TouchableOpacity, Switch, ScrollView, Dimensions } from "react-native";
 import { WhiteText } from "../../3-utils/Text";
 
 export class Settings extends Component {
@@ -47,9 +47,22 @@ export class Settings extends Component {
         </Description>
         <Name>Clear Training Model</Name>
         <Description>
-          Reset your training model and start from scratch. Warning: You cannot undo
-          this action. 
+          Reset the data we have collected about you and start from scratch. 
+          Warning: You cannot undo this action. 
         </Description>
+         <Button
+          onPress={() => {
+            Alert.alert(
+              'clear the current editing data?',
+              'This action cannot be undone',
+              [
+                { text: 'Cancel', onPress: () => console.log('Cancelled'), style:'cancel'},
+                { text: 'Clear', onPress: () => console.log('Clear')}
+              ]
+              );
+            }}
+            title="Clear"
+          />
         <Name> Upload Training Model </Name>
         <Description>
           Would you like to upload your personalized training model to the marketplace? 
