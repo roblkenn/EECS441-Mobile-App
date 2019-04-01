@@ -60,9 +60,7 @@ npm start
 
 Open a second terminal and navigate to the same directory:
 ```
-$ pwd
-/.../EECS-441-Mobile-App/FrontEnd
-```
+$ cd /.../EECS-441-Mobile-App/FrontEnd
 
 Run react-native and start the application:
 ```
