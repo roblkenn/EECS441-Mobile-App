@@ -6,7 +6,7 @@ const initialState = {
       description: 'Really good preset for sunsets',
     },
     {
-      username: 'susy123',
+      username: 'crolfes',
       title: 'Portraits',
       description: 'Really good preset for portraits',
     },
@@ -16,8 +16,8 @@ const initialState = {
       description: 'Really good preset for flowers',
     },
     {
-      username: 'jamal412',
-      title: 'Apple',
+      username: 'arbor',
+      title: 'forests',
       description: 'Really good preset for flowers',
     },
     {
