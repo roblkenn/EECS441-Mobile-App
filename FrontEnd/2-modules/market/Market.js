@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Text, Image, ScrollView, Dimensions, } from "react-native";
+import { Alert, Button, View, StyleSheet, Text, Image, ScrollView, Dimensions, } from "react-native";
 import colors from "../../0-base/colors";
 import { connect } from "react-redux";
 const { width, height } = Dimensions.get("window");
@@ -24,6 +24,19 @@ function Market({ products }) {
             {product.username}
           </Text>
           <Text style={styles.description}>{product.description}</Text>
+          <Button
+            onPress={() => {
+              Alert.alert(
+                'Purchase',
+                'Confirm purhcase?',
+                [
+                  { text: 'Cancel', onPress: () => console.log('Cancelled'), style: 'cancel' },
+                  { text: 'Buy', onPress: () => console.log('Purchased')}
+                ]
+              )
+            }}
+            title = {product.price}
+          />
           <View style={{flexDirection: 'row'}}>
             <Image
               style={{ width: 115, height: 100, marginRight: 5 }}
@@ -51,14 +64,20 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 10,
-    paddingTop: 90
+    paddingTop: 90,
+    backgroundColor: "white"
   },
   product: {
     marginBottom: 20
   },
   title: {
-    fontSize: 30,
+    textAlign: 'center',
+    alignSelf: 'stretch',
+    backgroundColor: colors.darkGrey,
+    margin: 10,
+    fontSize: 35,
     alignItems: "center",
+    fontWeight: 'bold',
     textTransform: "uppercase",
     letterSpacing: 3,
     color: "orange",
