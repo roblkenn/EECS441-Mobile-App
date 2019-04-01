@@ -1,36 +1,71 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, TextInput, TouchableOpacity, Switch, ScrollView, Dimensions } from "react-native";
 import { WhiteText } from "../../3-utils/Text";
 
 export class Settings extends Component {
+  constructor(props) { 
+    super(props)
+    this.state = { uploadValue : false}
+    this.state = { price : "Price" }
+    this.state = { description: "Enter Description Here" }
+  }
+  UploadSwitch = (value) => {
+    this.setState({uploadValue: value})
+  }
+
+  displayPriceInfo() {
+      if(this.state.uploadValue) {
+        return (
+          <TextInput style={styles.price}
+          keyboardType='numeric'
+          onChangeText={(price) => this.setState({price})}
+          value={this.state.price}
+          />
+        );
+      }
+  }
+  displayDescriptionInfo() {
+      if(this.state.uploadValue) {
+        return (
+          <TextInput style={styles.uploadDescription}
+          multiline={true}
+          onChangeText={(description) => this.setState({description})}
+          value={this.state.description}
+          maxLength={250}
+          />
+        );
+      }
+  }
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Settings</Text>
-        <Description>
-          Here is where you can change things. Pick your filters, that kind of
-          stuff
-        </Description>
-        <Name>Toggle Filter</Name>
-        <Description>
-          Here is where you can change things. Pick your filters, that kind of
-          stuff
-        </Description>
+        <ScrollView>
         <Name>Learning</Name>
         <Description>
-          Here is where you can change things. Pick your filters, that kind of
-          stuff
+          We are learning how you edit to make your editing process easier and faster!
         </Description>
         <Name>Clear Training Model</Name>
         <Description>
-          Here is where you can change things. Pick your filters, that kind of
-          stuff
+          Reset your training model and start from scratch. Warning: You cannot undo
+          this action. 
         </Description>
+        <Name> Upload Training Model </Name>
+        <Description>
+          Would you like to upload your personalized training model to the marketplace? 
+          Others will be able to purchase and apply your model to their photos.
+        </Description>
+        <Switch style ={styles.toggle}
+        onValueChange = {this.UploadSwitch}
+        value = {this.state.uploadValue}
+        />
+       {this.displayPriceInfo()}
+       {this.displayDescriptionInfo()}
+       </ScrollView>
       </View>
     );
   }
 }
-
 const Name = ({ children, ...props }) => (
   <Text style={styles.name} {...props}>
     {children}
@@ -64,5 +99,30 @@ const styles = StyleSheet.create({
   description: {
     color: "white",
     marginBottom: 10
+  },
+  toggle: {
+    alignSelf: 'center',
+    padding: 10,
+    paddingLeft: 15,
+    paddingRight: 15,
+    marginBottom: 10
+  },
+  price: {
+    height: 45,
+    width: 80,
+    textAlign: 'center',
+    alignSelf: 'flex-end',
+    borderColor: 'orange',
+    borderWidth: 2,
+    backgroundColor: "white"
+  },
+  uploadDescription: {
+    height: 100,
+    flex: 0.8,
+    marginTop: 10,
+    borderColor: "orange",
+    borderWidth: 2,
+    backgroundColor: "white",
+    textAlign: 'center'
   }
 });
