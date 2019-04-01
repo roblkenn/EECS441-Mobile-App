@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 import { Alert, Button, View, StyleSheet, Text, TextInput, TouchableOpacity, Switch, ScrollView, Dimensions } from "react-native";
 import { WhiteText } from "../../3-utils/Text";
+import colors from "../../0-base/colors";
 
 export class Settings extends Component {
+  
   constructor(props) { 
-    super(props)
-    this.state = { uploadValue : false}
-    this.state = { price : "Price" }
-    this.state = { description: "Enter Description Here" }
-    this.state = { title: "Name Your Model" }
-    this.state = { user: "Your Name" }
+    super(props);
+    this.initialState = {
+      uploadValue : false,
+      price: "",
+      description: "",
+      title: "",
+      user: "",
+    };
+    this.state = this.initialState;
   }
+
   UploadSwitch = (value) => {
     this.setState({uploadValue: value})
   }
@@ -19,6 +25,7 @@ export class Settings extends Component {
       if(this.state.uploadValue) {
         return (
           <TextInput style={styles.price}
+          placeholder="e.g. $10.00"
           keyboardType='numeric'
           onChangeText={(price) => this.setState({price})}
           value={this.state.price}
@@ -29,7 +36,9 @@ export class Settings extends Component {
   displayDescriptionInfo() {
       if(this.state.uploadValue) {
         return (
-          <TextInput style={styles.uploadDescription}
+          <TextInput 
+          style={styles.uploadDescription}
+          placeholder = "Write Description Here -- What is your model really great for?"
           multiline={true}
           onChangeText={(description) => this.setState({description})}
           value={this.state.description}
@@ -42,7 +51,8 @@ export class Settings extends Component {
     if(this.state.uploadValue) {
         return (
           <TextInput style={styles.titleBox}
-          onChangeText={(tile) => this.setState({title})}
+          placeholder="Name your model"
+          onChangeText={(title) => this.setState({title})}
           value={this.state.title}
           maxLength={25}
           />
@@ -53,6 +63,7 @@ export class Settings extends Component {
     if(this.state.uploadValue) {
         return (
           <TextInput style={styles.titleBox}
+          placeholder="Username"
           onChangeText={(user) => this.setState({user})}
           value={this.state.user}
           maxLength={12}
@@ -81,7 +92,7 @@ export class Settings extends Component {
               'This action cannot be undone',
               [
                 { text: 'Cancel', onPress: () => console.log('Cancelled'), style:'cancel'},
-                { text: 'Clear', onPress: () => console.log('Clear')}
+                { text: 'Clear', onPress: () => this.setState(this.initialState)}
               ]
               );
             }}
@@ -100,6 +111,10 @@ export class Settings extends Component {
         {this.displayTitleInfo()}
        {this.displayPriceInfo()}
        {this.displayDescriptionInfo()}
+       < Name > Purchased Models </Name>
+       <Description>
+        Select which model you would like to use here. You may only select one model.
+       </Description>
        </ScrollView>
       </View>
     );
