@@ -3,7 +3,7 @@ const initialState = {
     {
       username: 'bearb',
       title: 'Sunsets',
-      description: 'Really good preset for sunsets',
+      description: 'Really good preset for sunsets -- tested on hundreds of pictures taken on Nikon DSLR by a professional photographer.',
       price: '$15.00'
     },
     {

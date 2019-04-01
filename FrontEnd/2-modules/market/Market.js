@@ -20,7 +20,10 @@ function Market({ products }) {
         >
       {products.map(product => (
         <View key={product.title} style={styles.product}>
-          <Text style={styles.name}>
+          <Text style={styles.productTitle}>
+            {product.title}
+          </Text>
+          <Text style={styles.username}>
             {product.username}
           </Text>
           <Text style={styles.description}>{product.description}</Text>
@@ -28,7 +31,7 @@ function Market({ products }) {
             onPress={() => {
               Alert.alert(
                 'Purchase',
-                'Confirm purhcase?',
+                'Confirm purchase?',
                 [
                   { text: 'Cancel', onPress: () => console.log('Cancelled'), style: 'cancel' },
                   { text: 'Buy', onPress: () => console.log('Purchased')}
@@ -47,10 +50,16 @@ function Market({ products }) {
               source={{ uri: "https://static1.squarespace.com/static/5867aa75893fc0dff9ee6386/5b1024571ae6cf8146094bfb/5b1024890e2e72380d363c1b/1527784599268/8C9A5433.jpg?format=2500w" }}
             />
             <Image
-              style={{ width: 115, height: 100, marginRight: 5 }}
+              style={{ width: 115, height: 100, marginRight: 5, marginBottom: 5 }}
               source={{ uri: "https://static1.squarespace.com/static/5867aa75893fc0dff9ee6386/5b1024571ae6cf8146094bfb/5b1024890e2e72380d363c1b/1527784599268/8C9A5433.jpg?format=2500w" }}
             />
           </View>
+          <View
+          style = {{
+            borderBottomColor: 'black',
+            borderBottomWidth: 3,
+          }}
+          />
         </View>
       ))}
       </ScrollView>
@@ -72,9 +81,9 @@ const styles = StyleSheet.create({
   },
   title: {
     textAlign: 'center',
+    width: '100%',
     alignSelf: 'stretch',
     backgroundColor: colors.darkGrey,
-    margin: 10,
     fontSize: 35,
     alignItems: "center",
     fontWeight: 'bold',
@@ -83,24 +92,24 @@ const styles = StyleSheet.create({
     color: "orange",
     marginBottom: 20
   },
-  name: {
+  productTitle: {
     fontSize: 28,
     letterSpacing: 1,
-    color: colors.black,
+    color: "orange",
+    fontWeight: "bold",
   },
   description: {
-    fontSize: 20,
+    fontSize: 14,
     color: colors.black,
     marginBottom: 10
   },
-  price: {
-    borderWidth: 1,
+  username: {
     position: "absolute",
-    right: 30,
-    top: 220,
+    right: 10,
+    top: 0,
+    fontWeight: "bold",
     padding: 10,
-    backgroundColor: "orange",
-    borderColor: colors.offWhite
+    color: colors.darkGrey,
   },
   scrollContainer: {
     flexDirection: "row",
