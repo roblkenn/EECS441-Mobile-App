@@ -8,6 +8,8 @@ export class Settings extends Component {
     this.state = { uploadValue : false}
     this.state = { price : "Price" }
     this.state = { description: "Enter Description Here" }
+    this.state = { title: "Name Your Model" }
+    this.state = { user: "Your Name" }
   }
   UploadSwitch = (value) => {
     this.setState({uploadValue: value})
@@ -36,6 +38,28 @@ export class Settings extends Component {
         );
       }
   }
+  displayTitleInfo(){
+    if(this.state.uploadValue) {
+        return (
+          <TextInput style={styles.titleBox}
+          onChangeText={(tile) => this.setState({title})}
+          value={this.state.title}
+          maxLength={25}
+          />
+        );
+      }
+  }
+  displayNameInfo(){
+    if(this.state.uploadValue) {
+        return (
+          <TextInput style={styles.titleBox}
+          onChangeText={(user) => this.setState({user})}
+          value={this.state.user}
+          maxLength={12}
+          />
+        );
+      }
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -53,7 +77,7 @@ export class Settings extends Component {
          <Button
           onPress={() => {
             Alert.alert(
-              'clear the current editing data?',
+              'Clear the current editing data?',
               'This action cannot be undone',
               [
                 { text: 'Cancel', onPress: () => console.log('Cancelled'), style:'cancel'},
@@ -72,6 +96,8 @@ export class Settings extends Component {
         onValueChange = {this.UploadSwitch}
         value = {this.state.uploadValue}
         />
+        {this.displayNameInfo()}
+        {this.displayTitleInfo()}
        {this.displayPriceInfo()}
        {this.displayDescriptionInfo()}
        </ScrollView>
@@ -122,6 +148,7 @@ const styles = StyleSheet.create({
   },
   price: {
     height: 45,
+    marginBottom: 10,
     width: 80,
     textAlign: 'center',
     alignSelf: 'flex-end',
@@ -137,5 +164,16 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     backgroundColor: "white",
     textAlign: 'center'
+  },
+  titleBox: {
+    height: 45,
+    marginBottom: 10,
+    width: 150,
+    textAlign: 'center',
+    alignSelf: 'flex-end',
+    borderColor: 'orange',
+    borderWidth: 2,
+    backgroundColor: "white"
   }
+
 });
