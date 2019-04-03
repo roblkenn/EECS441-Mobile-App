@@ -53,12 +53,16 @@ $ pwd
 /.../EECS-441-Mobile-App/FrontEnd
 ```
 
-Run npm at one terminal window:
+Run npm on the terminal window:
 ```
 npm start
 ```
 
-Start app using another window:
+Open a second terminal and navigate to the same directory:
+```
+$ cd /.../EECS-441-Mobile-App/FrontEnd
+
+Run react-native and start the application:
 ```
 react-native run-ios
 ```

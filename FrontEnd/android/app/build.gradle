@@ -138,6 +138,8 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-fs')
+    implementation project(':react-native-image-base64')
     implementation project(':react-native-haptic-feedback')
     implementation project(':react-native-view-shot')
     implementation project(':react-native-color-matrix-image-filters')

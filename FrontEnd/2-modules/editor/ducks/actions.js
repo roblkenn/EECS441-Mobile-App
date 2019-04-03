@@ -8,7 +8,8 @@ import {
   HIDE_HELP,
   UNDO,
   START_COMPARE,
-  STOP_COMPARE
+  STOP_COMPARE,
+  EXPORT_IMAGE
 } from "./types";
 import Haptic from "react-native-haptic-feedback";
 
@@ -95,5 +96,11 @@ export function doStartCompare() {
 export function doStopCompare() {
   return {
     type: STOP_COMPARE
+  }
+}
+
+export function doExportImage() {
+  return {
+    type: EXPORT_IMAGE
   }
 }

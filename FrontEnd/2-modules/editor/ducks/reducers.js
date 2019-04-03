@@ -8,7 +8,9 @@ import {
   HIDE_HELP,
   UNDO,
   STOP_COMPARE,
-  START_COMPARE
+  START_COMPARE,
+  AUTO_EDIT,
+  EXPORT_IMAGE
 } from "./types";
 
 import Haptic from "react-native-haptic-feedback";
@@ -44,7 +46,8 @@ const initialState = {
     highlights: null,
     saturation: null,
     temperature: null
-  }
+  },
+  editHistory: []
 };
 
 export default function(state = initialState, action) {
@@ -144,7 +147,27 @@ export default function(state = initialState, action) {
         ...state,
         ...state.copyOfSettingsForCompare,
         copyOfSettingsForCompare: {}
-      }
+      };
+    case AUTO_EDIT:
+      return {
+        ...state,
+        ...payload.settings
+      };
+    case EXPORT_IMAGE:
+      console.log('hidasdf', state.editHistory);
+      return {
+        ...state,
+        editHistory: [
+          ...state.editHistory,
+          {
+            temperature: state.temperature,
+            brightness: state.brightness,
+            brightness: state.brightness,
+            contrast: state.contrast,
+            saturation: state.saturation
+          }
+        ]
+      };
     default:
       return state;
   }

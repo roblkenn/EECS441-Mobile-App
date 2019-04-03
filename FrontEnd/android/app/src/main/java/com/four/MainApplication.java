@@ -3,6 +3,8 @@ package com.four;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.rnfs.RNFSPackage;
+import fr.snapp.imagebase64.RNImgToBase64Package;
 import com.mkuczera.RNReactNativeHapticFeedbackPackage;
 import fr.greweb.reactnativeviewshot.RNViewShotPackage;
 import iyegoroff.RNColorMatrixImageFilters.ColorMatrixImageFiltersPackage;
@@ -27,6 +29,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFSPackage(),
+            new RNImgToBase64Package(),
             new RNReactNativeHapticFeedbackPackage(),
             new RNViewShotPackage(),
             new ColorMatrixImageFiltersPackage(),
