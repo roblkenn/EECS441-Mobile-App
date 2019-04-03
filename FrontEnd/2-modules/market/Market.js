@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Alert, Button, View, StyleSheet, Text, Image, ScrollView, Dimensions, } from "react-native";
 import colors from "../../0-base/colors";
 import { connect } from "react-redux";
+import { Stripe } from "../stripe";
 const { width, height } = Dimensions.get("window");
 
 
@@ -10,6 +11,8 @@ const select = ({ market }) => ({
 });
 
 function Market({ products }) {
+  const [showPurchaseScreen, setShowPurchaseScreen] = useState(false)
+  if (showPurchaseScreen) return <Stripe />
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Marketplace</Text>
@@ -34,7 +37,7 @@ function Market({ products }) {
                 'Confirm purchase?',
                 [
                   { text: 'Cancel', onPress: () => console.log('Cancelled'), style: 'cancel' },
-                  { text: 'Buy', onPress: () => console.log('Purchased')}
+                  { text: 'Buy', onPress: () => setShowPurchaseScreen(true)}
                 ]
               )
             }}
