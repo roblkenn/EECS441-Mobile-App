@@ -5,7 +5,7 @@ import { Market } from "./market";
 import Swiper from "../3-utils/react-native-swiper";
 import MoreImages from "./moreImages/MoreImages";
 import { connect } from "react-redux";
-import { Settings } from "./settings/Settings";
+import { Settings } from "./settings";
 
 const select = ({ editor }) => ({
   scrollEnabled: editor.scrollEnabled

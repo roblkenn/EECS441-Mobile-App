@@ -11,3 +11,4 @@ export const UNDO = 'UNDO'
 export const START_COMPARE = 'START_COMPARE'
 export const STOP_COMPARE = 'STOP_COMPARE'
 export const AUTO_EDIT = 'AUTO_EDIT'
+export const SET_ACTIVE_MODEL = "SET_ACTIVE_MODEL"

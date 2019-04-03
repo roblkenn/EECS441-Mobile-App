@@ -10,7 +10,8 @@ import {
   STOP_COMPARE,
   START_COMPARE,
   AUTO_EDIT,
-  EXPORT_IMAGE
+  EXPORT_IMAGE,
+  SET_ACTIVE_MODEL
 } from "./types";
 
 import Haptic from "react-native-haptic-feedback";
@@ -47,7 +48,8 @@ const initialState = {
     saturation: null,
     temperature: null
   },
-  editHistory: []
+  editHistory: [],
+  externalModel: null
 };
 
 export default function(state = initialState, action) {
@@ -154,7 +156,6 @@ export default function(state = initialState, action) {
         ...payload.settings
       };
     case EXPORT_IMAGE:
-      console.log('hidasdf', state.editHistory);
       return {
         ...state,
         editHistory: [
@@ -167,7 +168,13 @@ export default function(state = initialState, action) {
             saturation: state.saturation
           }
         ]
-      };
+      }
+    case SET_ACTIVE_MODEL: {
+      return {
+        ...state, 
+        externalModel: payload.model
+      }
+    }
     default:
       return state;
   }

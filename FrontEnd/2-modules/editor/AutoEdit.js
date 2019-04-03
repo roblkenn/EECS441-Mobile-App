@@ -1,15 +1,15 @@
 import React from "react";
 import { Text, TouchableOpacity, StyleSheet } from "react-native";
-// import { Haptic } from "expo";
 import { connect } from "react-redux";
-import { doAutoEdit } from "../moreImages/ducks";
+import { doAutoEdit, doSetActiveModel } from "./ducks/actions";
 
 const select = ({ editor }) => ({
   hide: editor.activeSlider
 });
 
 const actions = {
-  handleAutoEdit: doAutoEdit
+  handleAutoEdit: doAutoEdit,
+  setActiveModel: doSetActiveModel
 };
 
 function AutoEdit({ hide, handleAutoEdit }) {
