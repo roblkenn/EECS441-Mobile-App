@@ -3,10 +3,21 @@ import { connect } from "react-redux";
 import { doStartLoadImages } from "../moreImages/ducks";
 import ViewShot from "react-native-view-shot";
 import Haptic from "react-native-haptic-feedback";
-import { Image, View, CameraRoll } from "react-native";
+import { Image, View, CameraRoll, ImageStore } from "react-native";
+import Axios from "axios";
+import RNFS from "react-native-fs";
+import { doExportImage } from "./ducks/actions";
+
+const select = ({ editor }) => ({
+  contrast: editor.contrast,
+  brightness: editor.brightness,
+  saturation: editor.saturation,
+  temperature: editor.temperature
+});
 
 const actions = {
-  refreshImageGallery: doStartLoadImages
+  refreshImageGallery: doStartLoadImages,
+  exportImage: doExportImage
 };
 
 class SaveableImage extends Component {
@@ -19,13 +30,27 @@ class SaveableImage extends Component {
   }
 
   saveImageToCameraRoll() {
+    let { contrast, brightness, temperature, saturation } = this.props;
     Haptic.trigger("impactHeavy", true);
+    this.props.exportImage()
     this.refs.viewShot
       .capture()
       .then(uri => {
+        RNFS.readFile(uri, "base64").then(imageBase64 => {
+          Axios.post("https://styles-api.azurewebsites.net/dataset/", {
+            imageBase64,
+            contrast,
+            brightness,
+            temperature,
+            saturation
+          }).then(r => console.log(r));
+        });
         return CameraRoll.saveToCameraRoll(uri);
       })
       .then(this.props.refreshImageGallery);
+    Axios.get("https://styles-api.azurewebsites.net/dataset/").then(r =>
+      console.log(r)
+    );
   }
 
   render() {
@@ -55,6 +80,6 @@ class SaveableImage extends Component {
 }
 
 export default connect(
-  null,
+  select,
   actions
 )(SaveableImage);

@@ -9,7 +9,6 @@ import Feather from 'react-native-vector-icons/Feather'
 import Foundation from 'react-native-vector-icons/Foundation'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import colors from '../0-base/colors'
-import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const iconProps = { size: 32, color: 'white' }
 
