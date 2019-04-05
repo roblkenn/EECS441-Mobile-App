@@ -24,6 +24,8 @@ const actions = {
   setActiveModel: doSetActiveModel
 };
 
+
+
 class Settings extends Component {
   constructor(props) {
     super(props);
@@ -35,8 +37,16 @@ class Settings extends Component {
       user: ""
     };
     this.state = this.initialState;
-  }
-
+  };
+  clearModel() {
+    this.setState(this.initialState)
+    this.props.setActiveModel({
+      temperature: 1,
+      brightness: 1,
+      contrast: 1,
+      saturation: 1
+    })
+  };
   UploadSwitch = value => {
     this.setState({ uploadValue: value });
   };
@@ -122,7 +132,7 @@ class Settings extends Component {
                   },
                   {
                     text: "Clear",
-                    onPress: () => this.setState(this.initialState)
+                    onPress: () => this.clearModel()
                   }
                 ]
               );
@@ -145,19 +155,20 @@ class Settings extends Component {
           {this.displayPriceInfo()}
           {this.displayDescriptionInfo()}
           <Name> Purchased Models </Name>
-          <View style={{ marginVertical: 10 }}>
-            {this.props.purchasedModels.map(model => (
-              <TouchableOpacity
-                onPress={() => this.props.setActiveModel(model.presets)}
-              >
-                <WhiteText>{model.title}</WhiteText>
-              </TouchableOpacity>
-            ))}
-          </View>
+          
           <Description>
             Select which model you would like to use here. You may only select
             one model.
           </Description>
+          <View style={{ marginVertical: 10}}>
+            {this.props.purchasedModels.map(model => (
+              <TouchableOpacity
+                onPress={() => this.props.setActiveModel(model.presets)}
+              >
+                <Text style={styles.purchased}>{model.title}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
         </ScrollView>
       </View>
     );
@@ -185,6 +196,13 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingTop: 30,
     backgroundColor: "black"
+  },
+  purchased: {
+    fontSize: 20,
+    padding: 5,
+    marginBottom: 15,
+    color: colors.offWhite,
+    textAlign: "center",
   },
   title: {
     fontSize: 36,
