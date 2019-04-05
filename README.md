@@ -8,6 +8,7 @@
 
 1. macOS >= 10.14
 2. Xcode >= 10.1
+3. Node JS >=9.10.0
 
 Search App Store to get these softwares.
 
