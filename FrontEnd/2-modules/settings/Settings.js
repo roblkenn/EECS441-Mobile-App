@@ -157,8 +157,7 @@ class Settings extends Component {
           <Name> Purchased Models </Name>
           
           <Description>
-            Select which model you would like to use here. You may only select
-            one model.
+            Select the model you would like to use below:  
           </Description>
           <View style={{ marginVertical: 10}}>
             {this.props.purchasedModels.map(model => (
@@ -169,6 +168,9 @@ class Settings extends Component {
               </TouchableOpacity>
             ))}
           </View>
+          <Description>
+            Want more models? Head over to the marketplace to purchase more!
+          </Description>
         </ScrollView>
       </View>
     );
