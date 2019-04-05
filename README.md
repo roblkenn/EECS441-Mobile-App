@@ -54,6 +54,10 @@ yarn add stripe
 ```
 yarn add axios
 ```
+9. Install Pods
+```
+npm install -g pod
+```
 #### Run project
 
 Double check your current directory:
