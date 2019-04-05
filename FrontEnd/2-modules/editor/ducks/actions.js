@@ -11,7 +11,8 @@ import {
   STOP_COMPARE,
   EXPORT_IMAGE,
   AUTO_EDIT,
-  SET_ACTIVE_MODEL
+  SET_ACTIVE_MODEL,
+  CLEARED_HISTORY
 } from "./types";
 import Haptic from "react-native-haptic-feedback";
 
@@ -110,6 +111,12 @@ export function doSetActiveModel(model) {
   return {
     type: SET_ACTIVE_MODEL,
     payload: { model }
+  };
+}
+
+export function doClearHistory() {
+  return {
+    type: CLEARED_HISTORY
   };
 }
 

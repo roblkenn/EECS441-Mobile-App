@@ -11,7 +11,8 @@ import {
   START_COMPARE,
   AUTO_EDIT,
   EXPORT_IMAGE,
-  SET_ACTIVE_MODEL
+  SET_ACTIVE_MODEL,
+  CLEARED_HISTORY
 } from "./types";
 
 import Haptic from "react-native-haptic-feedback";
@@ -168,12 +169,18 @@ export default function(state = initialState, action) {
             saturation: state.saturation
           }
         ]
-      }
+      };
     case SET_ACTIVE_MODEL: {
       return {
-        ...state, 
+        ...state,
         externalModel: payload.model
-      }
+      };
+    }
+    case CLEARED_HISTORY: {
+      return {
+        ...state,
+        editHistory: []
+      };
     }
     default:
       return state;

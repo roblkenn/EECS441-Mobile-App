@@ -14,7 +14,7 @@ import {
 import { WhiteText } from "../../3-utils/Text";
 import colors from "../../0-base/colors";
 import { connect } from "react-redux";
-import { doSetActiveModel } from "../editor";
+import { doSetActiveModel, doClearHistory } from "../editor";
 import { doUploadModelToMarket } from "../market/ducks/actions";
 
 const select = ({ settings }) => ({
@@ -24,7 +24,8 @@ const select = ({ settings }) => ({
 
 const actions = {
   setActiveModel: doSetActiveModel,
-  uploadModelToMarket: doUploadModelToMarket
+  uploadModelToMarket: doUploadModelToMarket,
+  clearHistory: doClearHistory
 };
 
 class Settings extends Component {
@@ -34,18 +35,13 @@ class Settings extends Component {
       uploadValue: false,
       price: "",
       description: "",
-      title: "",
+      title: ""
     };
     this.state = this.initialState;
   }
   clearModel() {
     this.setState(this.initialState);
-    this.props.setActiveModel({
-      temperature: 1,
-      brightness: 1,
-      contrast: 1,
-      saturation: 1
-    });
+    this.props.clearHistory();
   }
   UploadSwitch = value => {
     this.setState({ uploadValue: value });
@@ -112,7 +108,7 @@ class Settings extends Component {
         <TouchableOpacity
           style={styles.submitButton}
           onPress={() => {
-            console.log(this.state)
+            console.log(this.state);
             this.props.uploadModelToMarket({
               title,
               price,
@@ -182,6 +178,11 @@ class Settings extends Component {
           <Description>
             Select the model you would like to use below:
           </Description>
+          <TouchableOpacity onPress={() => this.props.setActiveModel(null)}>
+            <Text style={[styles.purchased, { fontWeight: "bold" }]}>
+              My Model
+            </Text>
+          </TouchableOpacity>
           <View style={{ marginVertical: 10 }}>
             {this.props.purchasedModels.map(model => (
               <TouchableOpacity
