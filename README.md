@@ -48,6 +48,10 @@ npm install --save redux
 ```
 yarn add stripe
 ```
+8. Install Axios
+```
+yarn add axios
+```
 #### Run project
 
 Double check your current directory:
