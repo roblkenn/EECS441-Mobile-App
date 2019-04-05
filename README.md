@@ -54,9 +54,9 @@ yarn add stripe
 ```
 yarn add axios
 ```
-9. Install Pods
+9. Install Cocoapods
 ```
-npm install -g pod
+sudo gem install cocoapods --source http://rubygems.org
 ```
 #### Run project
 
