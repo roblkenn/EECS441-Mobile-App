@@ -44,7 +44,10 @@ brew install watchman
 ```
 npm install --save redux
 ```
-
+7. Install Stripe
+```
+yarn add stripe
+```
 #### Run project
 
 Double check your current directory:
