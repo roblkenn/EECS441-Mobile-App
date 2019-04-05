@@ -1,3 +1,5 @@
+import { UPLOADED_MODEL_TO_MARKET, REMOVED_MODEL_FROM_MARKET } from "./types";
+
 const initialState = {
   products: [
     {
@@ -103,6 +105,16 @@ const initialState = {
 export default function(state = initialState, action) {
   const { payload, type } = action;
   switch (type) {
+    case UPLOADED_MODEL_TO_MARKET:
+      return {
+        ...state,
+        products: [...state.products, payload.model]
+      }
+    // case REMOVED_MODEL_FROM_MARKET:
+    //   return {
+    //     ...state,
+    //     products: state.products.filter(product => product.title !== )
+    //   }
     default:
       return state;
   }

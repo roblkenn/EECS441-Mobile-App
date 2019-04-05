@@ -15,16 +15,16 @@ import { WhiteText } from "../../3-utils/Text";
 import colors from "../../0-base/colors";
 import { connect } from "react-redux";
 import { doSetActiveModel } from "../editor";
+import { doUploadModelToMarket } from "../market/ducks/actions";
 
 const select = ({ settings }) => ({
   purchasedModels: settings.purchasedModels
 });
 
 const actions = {
-  setActiveModel: doSetActiveModel
+  setActiveModel: doSetActiveModel,
+  uploadModelToMarket: doUploadModelToMarket
 };
-
-
 
 class Settings extends Component {
   constructor(props) {
@@ -37,16 +37,16 @@ class Settings extends Component {
       user: ""
     };
     this.state = this.initialState;
-  };
+  }
   clearModel() {
-    this.setState(this.initialState)
+    this.setState(this.initialState);
     this.props.setActiveModel({
       temperature: 1,
       brightness: 1,
       contrast: 1,
       saturation: 1
-    })
-  };
+    });
+  }
   UploadSwitch = value => {
     this.setState({ uploadValue: value });
   };
@@ -104,6 +104,28 @@ class Settings extends Component {
       );
     }
   }
+
+  displaySubmitButton() {
+    let { price, description, title, user } = this.state;
+    if (this.state.uploadValue) {
+      return (
+        <TouchableOpacity
+          style={styles.submitButton}
+          onPress={() => {
+            console.log(this.state)
+            this.props.uploadModelToMarket({
+              title,
+              price,
+              description,
+              username: user
+            });
+          }}
+        >
+          <Text style={{ color: "white" }}>update</Text>
+        </TouchableOpacity>
+      );
+    }
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -154,12 +176,13 @@ class Settings extends Component {
           {this.displayTitleInfo()}
           {this.displayPriceInfo()}
           {this.displayDescriptionInfo()}
+          {this.displaySubmitButton()}
           <Name> Purchased Models </Name>
-          
+
           <Description>
-            Select the model you would like to use below:  
+            Select the model you would like to use below:
           </Description>
-          <View style={{ marginVertical: 10}}>
+          <View style={{ marginVertical: 10 }}>
             {this.props.purchasedModels.map(model => (
               <TouchableOpacity
                 onPress={() => this.props.setActiveModel(model.presets)}
@@ -193,6 +216,16 @@ const Description = ({ children, ...props }) => (
 );
 
 const styles = StyleSheet.create({
+  submitButton: {
+    backgroundColor: "orange",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 40,
+    width: 150,
+    alignSelf: "center",
+    marginVertical: 10,
+    alignItems: "center"
+  },
   container: {
     flex: 1,
     padding: 20,
@@ -204,7 +237,7 @@ const styles = StyleSheet.create({
     padding: 5,
     marginBottom: 15,
     color: colors.offWhite,
-    textAlign: "center",
+    textAlign: "center"
   },
   title: {
     fontSize: 36,
@@ -232,30 +265,25 @@ const styles = StyleSheet.create({
   price: {
     height: 45,
     marginBottom: 10,
-    width: 80,
-    textAlign: "center",
+    width: "100%",
     alignSelf: "flex-end",
     borderColor: "orange",
-    borderWidth: 2,
-    backgroundColor: "white"
+    backgroundColor: "white",
+    paddingHorizontal: 5
   },
   uploadDescription: {
     height: 100,
     flex: 0.8,
     marginTop: 10,
-    borderColor: "orange",
-    borderWidth: 2,
     backgroundColor: "white",
-    textAlign: "center"
+    paddingHorizontal: 5
   },
   titleBox: {
     height: 45,
     marginBottom: 10,
-    width: 150,
-    textAlign: "center",
+    width: "100%",
     alignSelf: "flex-end",
-    borderColor: "orange",
-    borderWidth: 2,
-    backgroundColor: "white"
+    backgroundColor: "white",
+    paddingHorizontal: 5
   }
 });
