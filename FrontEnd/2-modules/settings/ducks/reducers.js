@@ -1,6 +1,7 @@
 import { PURCHASED_MODEL } from "./types";
 
 const initialState = {
+  myUserName: 'steve12',
   purchasedModels: [
     {
       username: "bearb",

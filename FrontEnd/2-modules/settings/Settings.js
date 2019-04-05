@@ -18,7 +18,8 @@ import { doSetActiveModel } from "../editor";
 import { doUploadModelToMarket } from "../market/ducks/actions";
 
 const select = ({ settings }) => ({
-  purchasedModels: settings.purchasedModels
+  purchasedModels: settings.purchasedModels,
+  myUserName: settings.myUserName
 });
 
 const actions = {
@@ -34,7 +35,6 @@ class Settings extends Component {
       price: "",
       description: "",
       title: "",
-      user: ""
     };
     this.state = this.initialState;
   }
@@ -106,7 +106,7 @@ class Settings extends Component {
   }
 
   displaySubmitButton() {
-    let { price, description, title, user } = this.state;
+    let { price, description, title } = this.state;
     if (this.state.uploadValue) {
       return (
         <TouchableOpacity
@@ -117,7 +117,7 @@ class Settings extends Component {
               title,
               price,
               description,
-              username: user
+              username: this.props.myUserName
             });
           }}
         >
@@ -172,7 +172,7 @@ class Settings extends Component {
             onValueChange={this.UploadSwitch}
             value={this.state.uploadValue}
           />
-          {this.displayNameInfo()}
+          {/* {this.displayNameInfo()} */}
           {this.displayTitleInfo()}
           {this.displayPriceInfo()}
           {this.displayDescriptionInfo()}

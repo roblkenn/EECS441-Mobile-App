@@ -15,15 +15,16 @@ import { Stripe } from "../stripe";
 import { doPurchaseModel } from "../moreImages/ducks";
 const { width, height } = Dimensions.get("window");
 
-const select = ({ market }) => ({
-  products: market.products
+const select = ({ market, settings }) => ({
+  products: market.products,
+  myUserName: settings.myUserName
 });
 
 const actions = {
   purchaseModel: doPurchaseModel
 };
 
-function Market({ products, purchaseModel }) {
+function Market({ products, myUserName, purchaseModel }) {
   const [showPurchaseScreen, setShowPurchaseScreen] = useState(false);
   if (showPurchaseScreen) return <Stripe />;
   return (
@@ -39,26 +40,28 @@ function Market({ products, purchaseModel }) {
             <Text style={styles.productTitle}>{product.title}</Text>
             <Text style={styles.username}>{product.username}</Text>
             <Text style={styles.description}>{product.description}</Text>
-            <Button
-              onPress={() => {
-                Alert.alert("Purchase", "Confirm purchase?", [
-                  {
-                    text: "Cancel",
-                    onPress: () => console.log("Cancelled"),
-                    style: "cancel"
-                  },
-                  {
-                    text: "Buy",
-                    onPress: () => {
-                      purchaseModel(product);
-                      setShowPurchaseScreen(true);
+            {product.username !== myUserName && (
+              <Button
+                onPress={() => {
+                  Alert.alert("Purchase", "Confirm purchase?", [
+                    {
+                      text: "Cancel",
+                      onPress: () => console.log("Cancelled"),
+                      style: "cancel"
+                    },
+                    {
+                      text: "Buy",
+                      onPress: () => {
+                        purchaseModel(product);
+                        setShowPurchaseScreen(true);
+                      }
                     }
-                  }
-                ]);
-              }}
-              title={product.price}
-            />
-            <View style={{ flexDirection: "row" }}>
+                  ]);
+                }}
+                title={product.price}
+              />
+            )}
+            {/* <View style={{ flexDirection: "row" }}>
               <Image
                 style={{ width: 115, height: 100, marginRight: 5 }}
                 source={{
@@ -85,7 +88,7 @@ function Market({ products, purchaseModel }) {
                     "https://static1.squarespace.com/static/5867aa75893fc0dff9ee6386/5b1024571ae6cf8146094bfb/5b1024890e2e72380d363c1b/1527784599268/8C9A5433.jpg?format=2500w"
                 }}
               />
-            </View>
+            </View> */}
             <View
               style={{
                 borderBottomColor: "black",
@@ -112,7 +115,8 @@ const styles = StyleSheet.create({
     backgroundColor: "white"
   },
   product: {
-    marginBottom: 20
+    marginBottom: 20,
+    width: '100%'
   },
   title: {
     textAlign: "center",
