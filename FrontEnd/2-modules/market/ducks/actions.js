@@ -31,7 +31,7 @@ export function doUploadModelToMarket({ title, price, description, username }) {
     }
     dispatch({
       type: UPLOADED_MODEL_TO_MARKET,
-      payload: { model }
+      payload: { model, username }
     })
   };
 }

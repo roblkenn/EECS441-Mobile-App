@@ -106,10 +106,14 @@ export default function(state = initialState, action) {
   const { payload, type } = action;
   switch (type) {
     case UPLOADED_MODEL_TO_MARKET:
+      const { username } = payload;
+      const modelAlreadyExists =
+        state.products.filter(item => item.username === username).length !== 0;
+      if (modelAlreadyExists) return state;
       return {
         ...state,
         products: [...state.products, payload.model]
-      }
+      };
     // case REMOVED_MODEL_FROM_MARKET:
     //   return {
     //     ...state,
