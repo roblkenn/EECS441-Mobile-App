@@ -9,94 +9,58 @@ const initialState = {
         "Really good preset for sunsets -- tested on hundreds of pictures taken on Nikon DSLR by a professional photographer.",
       price: "$15.00",
       presets: {
-        temperature: 1.5,
-        brightness: 1.5,
-        contrast: 1.5,
-        saturation: 1.5
+        temperature: 1.24,
+        brightness: 0.85,
+        contrast: 1.1,
+        saturation: 1.4
       }
     },
     {
       username: "crolfes",
       title: "Portraits",
-      description: "Really good preset for portraits",
+      description: "Preset made and tested on portraits all taken on iPhone XR camera",
       price: "$1.00",
       presets: {
-        temperature: 1.5,
-        brightness: 1.5,
-        contrast: 1.5,
-        saturation: 1.5
+        temperature: 0.87,
+        brightness: 1.1,
+        contrast: 0.9,
+        saturation: 1.0
       }
     },
     {
       username: "jamal412",
-      title: "Flowers",
-      description: "Really good preset for flowers",
+      title: "Instagram",
+      description: "This is how I edit my photos for Instagram posts... 4K followers!",
       price: "$115.00",
       presets: {
-        temperature: 1.5,
-        brightness: 1.5,
-        contrast: 1.5,
-        saturation: 1.5
+        temperature: 0.9,
+        brightness: 1.3,
+        contrast: 1.1,
+        saturation: 1.3
       }
     },
     {
       username: "arbor",
       title: "forests",
-      description: "Really good preset for flowers",
-      price: "$1335.00",
+      description: "I take a lot of pictures in forests and this is what I edit them with",
+      price: "$13.00",
       presets: {
-        temperature: 1.5,
+        temperature: 1,
         brightness: 1.5,
-        contrast: 1.5,
-        saturation: 1.5
+        contrast: 1.2,
+        saturation: 1.1
       }
     },
     {
-      username: "jamal412",
-      title: "Orange",
-      description: "Really good preset for flowers",
-      price: "$154.00",
-      presets: {
-        temperature: 1.5,
-        brightness: 1.5,
-        contrast: 1.5,
-        saturation: 1.5
-      }
-    },
-    {
-      username: "jamal412",
-      title: "asd",
-      description: "Really good preset for flowers",
+      username: "ecorn",
+      title: "Food",
+      description: "phone eats first!",
       price: "$15.00",
       presets: {
-        temperature: 1.5,
-        brightness: 1.5,
-        contrast: 1.5,
-        saturation: 1.5
-      }
-    },
-    {
-      username: "jamal412",
-      title: "fafa",
-      description: "Really good preset for flowers",
-      price: "$15.00",
-      presets: {
-        temperature: 1.5,
-        brightness: 1.5,
-        contrast: 1.5,
-        saturation: 1.5
-      }
-    },
-    {
-      username: "jamal412",
-      title: "asdf",
-      description: "Really good preset for flowers",
-      price: "$15.00",
-      presets: {
-        temperature: 1.5,
-        brightness: 1.5,
-        contrast: 1.5,
-        saturation: 1.5
+        temperature: 1.0,
+        brightness: 1.3,
+        contrast: 0.9,
+        saturation: 1.0
       }
     }
   ]
