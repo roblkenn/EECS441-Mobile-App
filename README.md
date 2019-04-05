@@ -46,6 +46,7 @@ npm install --save redux
 ```
 7. Install Stripe
 ```
+npm install --save tipsi-stripe
 yarn add stripe
 ```
 8. Install Axios
