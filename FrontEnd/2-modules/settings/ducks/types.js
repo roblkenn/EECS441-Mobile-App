@@ -1,0 +1,1 @@
+export const PURCHASED_MODEL = "PURCHASED_MODEL"

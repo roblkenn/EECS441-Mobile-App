@@ -1,6 +1,7 @@
 import { CameraRoll } from "react-native";
 import { FINISH_LOAD_IMAGES } from "./types";
 import { AUTO_EDIT } from "../../editor/ducks/types";
+import { PURCHASED_MODEL } from "../../settings/ducks/types";
 
 export function doStartLoadImages() {
   return dispatch => {
@@ -18,5 +19,12 @@ export function doFinishLoadImages(images) {
     payload: {
       images
     }
+  };
+}
+
+export function doPurchaseModel(model) {
+  return {
+    type: PURCHASED_MODEL,
+    payload: { model }
   };
 }

@@ -16,6 +16,10 @@ import colors from "../../0-base/colors";
 import { connect } from "react-redux";
 import { doSetActiveModel } from "../editor";
 
+const select = ({ settings }) => ({
+  purchasedModels: settings.purchasedModels
+});
+
 const actions = {
   setActiveModel: doSetActiveModel
 };
@@ -93,19 +97,6 @@ class Settings extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableOpacity
-          onPress={() =>
-            this.props.setActiveModel({
-              temperature: -1,
-              contrast: -1,
-              brightness: -1,
-              saturation: -1
-            })
-          }
-          style={{ marginTop: 50 }}
-        >
-          <WhiteText>change model</WhiteText>
-        </TouchableOpacity>
         <Text style={styles.title}>Settings</Text>
         <ScrollView>
           <Name>Learning</Name>
@@ -154,6 +145,15 @@ class Settings extends Component {
           {this.displayPriceInfo()}
           {this.displayDescriptionInfo()}
           <Name> Purchased Models </Name>
+          <View style={{ marginVertical: 10 }}>
+            {this.props.purchasedModels.map(model => (
+              <TouchableOpacity
+                onPress={() => this.props.setActiveModel(model.presets)}
+              >
+                <WhiteText>{model.title}</WhiteText>
+              </TouchableOpacity>
+            ))}
+          </View>
           <Description>
             Select which model you would like to use here. You may only select
             one model.
@@ -165,7 +165,7 @@ class Settings extends Component {
 }
 
 export default connect(
-  null,
+  select,
   actions
 )(Settings);
 const Name = ({ children, ...props }) => (
