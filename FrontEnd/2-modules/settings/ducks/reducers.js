@@ -1,7 +1,8 @@
-import { PURCHASED_MODEL } from "./types";
+import { PURCHASED_MODEL, GET_USER_ID } from "./types";
 
 const initialState = {
-  myUserName: 'steve12',
+  myUserName: "steve12",
+  id: null,
   purchasedModels: [
     {
       username: "bearb",
@@ -31,11 +32,16 @@ const initialState = {
 export default function(state = initialState, action) {
   const { payload, type } = action;
   switch (type) {
-    case PURCHASED_MODEL: 
+    case PURCHASED_MODEL:
       return {
         ...state,
         purchasedModels: [...state.purchasedModels, payload.model]
-      }
+      };
+    case GET_USER_ID:
+      return {
+        ...state,
+        id: payload.id
+      };
     default:
       return state;
   }

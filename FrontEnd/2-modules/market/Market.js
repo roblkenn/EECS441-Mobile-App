@@ -17,51 +17,56 @@ const { width, height } = Dimensions.get("window");
 
 const select = ({ market, settings }) => ({
   products: market.products,
-  myUserName: settings.myUserName
+  myUserName: settings.myUserName,
+  modelBlacklist: settings.purchasedModels
 });
 
 const actions = {
   purchaseModel: doPurchaseModel
 };
 
-function Market({ products, myUserName, purchaseModel }) {
+function Market({ products, myUserName, purchaseModel, modelBlacklist }) {
   const [showPurchaseScreen, setShowPurchaseScreen] = useState(false);
-  if (showPurchaseScreen) return <Stripe />;
+  // if (showPurchaseScreen) return <Stripe />;
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Marketplace</Text>
       <ScrollView
         contentContainerStyle={styles.scrollContainer}
-        style={styles.scrollBodył}
         scrollEnabled={true}
       >
-        {products.map(product => (
-          <View key={product.title} style={styles.product}>
-            <Text style={styles.productTitle}>{product.title}</Text>
-            <Text style={styles.username}>{product.username}</Text>
-            <Text style={styles.description}>{product.description}</Text>
-            {product.username !== myUserName && (
-              <Button
-                onPress={() => {
-                  Alert.alert("Purchase", "Confirm purchase?", [
-                    {
-                      text: "Cancel",
-                      onPress: () => console.log("Cancelled"),
-                      style: "cancel"
-                    },
-                    {
-                      text: "Buy",
-                      onPress: () => {
-                        purchaseModel(product);
-                        setShowPurchaseScreen(true);
+        {products.map(product => {
+          const inBlacklist =
+            modelBlacklist.filter(blackModel => blackModel.id === product.id)
+              .length > 0;
+          if (inBlacklist) return null;
+          return (
+            <View key={product.title} style={styles.product}>
+              <Text style={styles.productTitle}>{product.title}</Text>
+              <Text style={styles.username}>{product.username}</Text>
+              <Text style={styles.description}>{product.description}</Text>
+              {product.username !== myUserName && (
+                <Button
+                  onPress={() => {
+                    Alert.alert("Purchase", "Confirm purchase?", [
+                      {
+                        text: "Cancel",
+                        onPress: () => console.log("Cancelled"),
+                        style: "cancel"
+                      },
+                      {
+                        text: "Buy",
+                        onPress: () => {
+                          purchaseModel(product);
+                          setShowPurchaseScreen(true);
+                        }
                       }
-                    }
-                  ]);
-                }}
-                title={product.price}
-              />
-            )}
-            {/* <View style={{ flexDirection: "row" }}>
+                    ]);
+                  }}
+                  title={product.price}
+                />
+              )}
+              {/* <View style={{ flexDirection: "row" }}>
               <Image
                 style={{ width: 115, height: 100, marginRight: 5 }}
                 source={{
@@ -89,14 +94,15 @@ function Market({ products, myUserName, purchaseModel }) {
                 }}
               />
             </View> */}
-            <View
-              style={{
-                borderBottomColor: "black",
-                borderBottomWidth: 3
-              }}
-            />
-          </View>
-        ))}
+              <View
+                style={{
+                  borderBottomColor: "black",
+                  borderBottomWidth: 3
+                }}
+              />
+            </View>
+          );
+        })}
       </ScrollView>
     </View>
   );
@@ -116,7 +122,7 @@ const styles = StyleSheet.create({
   },
   product: {
     marginBottom: 20,
-    width: '100%'
+    width: "100%"
   },
   title: {
     textAlign: "center",
@@ -153,10 +159,5 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flexDirection: "row",
     flexWrap: "wrap"
-  },
-  scrollBody: {
-    width,
-    flex: 1,
-    backgroundColor: colors.darkGrey
   }
 });

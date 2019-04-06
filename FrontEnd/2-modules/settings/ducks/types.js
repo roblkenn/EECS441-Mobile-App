@@ -1,1 +1,2 @@
 export const PURCHASED_MODEL = "PURCHASED_MODEL"
+export const GET_USER_ID = "GET_USER_ID"

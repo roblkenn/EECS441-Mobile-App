@@ -5,11 +5,15 @@ import { Market } from "./market";
 import Swiper from "../3-utils/react-native-swiper";
 import MoreImages from "./moreImages/MoreImages";
 import { connect } from "react-redux";
-import { Settings } from "./settings";
+import { Settings, doGetUserID } from "./settings";
 
 const select = ({ editor }) => ({
   scrollEnabled: editor.scrollEnabled
 });
+
+const actions = {
+  getUserID: doGetUserID
+}
 
 class Router extends Component {
   constructor(props) {
@@ -19,6 +23,10 @@ class Router extends Component {
 
   slideToMainView() {
     this._swiper.scrollBy(1)
+  }
+
+  componentDidMount(){
+    this.props.getUserID()
   }
 
   render() {
@@ -50,4 +58,4 @@ class Router extends Component {
   }
 }
 
-export default connect(select)(Router);
+export default connect(select, actions)(Router);

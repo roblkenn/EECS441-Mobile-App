@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   Switch,
   ScrollView,
-  Dimensions
+  Dimensions,
 } from "react-native";
 import { WhiteText } from "../../3-utils/Text";
 import colors from "../../0-base/colors";
@@ -17,9 +17,11 @@ import { connect } from "react-redux";
 import { doSetActiveModel, doClearHistory } from "../editor";
 import { doUploadModelToMarket } from "../market/ducks/actions";
 
+
 const select = ({ settings }) => ({
   purchasedModels: settings.purchasedModels,
-  myUserName: settings.myUserName
+  myUserName: settings.myUserName,
+  id: settings.id
 });
 
 const actions = {
@@ -113,7 +115,8 @@ class Settings extends Component {
               title,
               price,
               description,
-              username: this.props.myUserName
+              username: this.props.myUserName,
+              RowKey: this.props.id
             });
           }}
         >
@@ -123,9 +126,11 @@ class Settings extends Component {
     }
   }
   render() {
+    console.log(this.props.id)
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Settings</Text>
+        <WhiteText>{this.props.id}</WhiteText>
         <ScrollView>
           <Name>Learning</Name>
           <Description>

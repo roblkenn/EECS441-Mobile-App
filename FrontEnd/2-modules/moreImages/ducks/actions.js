@@ -2,6 +2,7 @@ import { CameraRoll } from "react-native";
 import { FINISH_LOAD_IMAGES } from "./types";
 import { AUTO_EDIT } from "../../editor/ducks/types";
 import { PURCHASED_MODEL } from "../../settings/ducks/types";
+import Axios from "axios";
 
 export function doStartLoadImages() {
   return dispatch => {
