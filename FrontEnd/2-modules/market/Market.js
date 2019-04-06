@@ -28,15 +28,11 @@ const actions = {
 
 function Market({ products, myUserName, purchaseModel, modelBlacklist }) {
   const [showPurchaseScreen, setShowPurchaseScreen] = useState(false);
-<<<<<<< HEAD
-  // if (showPurchaseScreen) return <Stripe />;
-=======
   if (showPurchaseScreen) return (
     <View>
     <NewCardPage/>
     </View>
     );
->>>>>>> 3e4effb522577470ad11f757a8327f3cdb7d995a
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Marketplace</Text>
