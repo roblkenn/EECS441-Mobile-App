@@ -1,42 +1,37 @@
-import React from 'react'
-import {View, Text, StyleSheet, Button} from 'react-native'
-import { Component } from 'react';
+import React, { Component } from 'react';
+import { View } from 'react-native';
 import stripe from 'tipsi-stripe';
 
-/*stripe.setOptions({
-  publishableKey:'pk_test_6kET7677UpCRMhY20DP7Fbag00l2dxiWry',
+stripe.setOptions({
+  publishableKey: "pk_test_6kET7677UpCRMhY20DP7Fbag00l2dxiWry",
 });
 
-export default class Payment extends Component {
-    requestPayment = () => {
-    return stripe
-      .paymentRequestWithCardForm()
-      .then(stripeTokenInfo => {
-        console.warn('Token created', { stripeTokenInfo });
+const theme = {
+  primaryBackgroundColor: "white",
+  secondaryBackgroundColor: "darkgray",
+  primaryForegroundColor: "white",
+  secondaryForegroundColor: "white",
+  accentColor: "orange",
+  errorColor: "black",
+};
+export class NewCardPage extends Component {
+  componentDidMount() {
+    
+    const options = {
+      smsAutofillDisabled: true,
+      requiredBillingAddressFields: 'zip',
+      theme
+    };
+    stripe.paymentRequestWithCardForm(options)
+      .then(response => {
+        // Get the token from the response, and send to your server
       })
       .catch(error => {
-        console.warn('Payment failed', { error });
+        // Handle error
+        alert("Error Reading Card")
       });
-  };
-
+  }
   render() {
-    return (
-      <View style={styles.container}>
-        <Button
-          title="Make a payment"
-          onPress={this.requestPayment}
-          disabled={this.state.isPaymentPending}
-        />
-      </View>
-    );
+    return <View />
   }
 }
-
-const styles = {
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-};
-*/

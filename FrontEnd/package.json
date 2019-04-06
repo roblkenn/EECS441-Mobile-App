@@ -20,6 +20,7 @@
     "react-redux": "^6.0.1",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
+    "stripe": "^6.28.0",
     "tipsi-stripe": "^7.4.0",
     "uuid": "^3.3.2"
   },

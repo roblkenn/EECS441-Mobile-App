@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Component } from "react";
 import {
   Alert,
   Button,
@@ -11,7 +12,7 @@ import {
 } from "react-native";
 import colors from "../../0-base/colors";
 import { connect } from "react-redux";
-import { Stripe } from "../stripe";
+import { NewCardPage } from "../stripe/Stripe";
 import { doPurchaseModel } from "../moreImages/ducks";
 const { width, height } = Dimensions.get("window");
 
@@ -27,7 +28,15 @@ const actions = {
 
 function Market({ products, myUserName, purchaseModel, modelBlacklist }) {
   const [showPurchaseScreen, setShowPurchaseScreen] = useState(false);
+<<<<<<< HEAD
   // if (showPurchaseScreen) return <Stripe />;
+=======
+  if (showPurchaseScreen) return (
+    <View>
+    <NewCardPage/>
+    </View>
+    );
+>>>>>>> 3e4effb522577470ad11f757a8327f3cdb7d995a
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Marketplace</Text>
