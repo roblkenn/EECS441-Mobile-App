@@ -1,0 +1,32 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '9.0'
+
+#Workspace
+workspace 'Four.xcworkspace'
+
+target 'Four' do
+  # Pods for Four
+  pod 'Stripe', '~> 14.0.0'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Crash'
+  pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Performance'
+  pod 'Firebase/Storage'	
+
+end
+
+target 'Four-tvOS' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for Four-tvOS
+
+  target 'Four-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
