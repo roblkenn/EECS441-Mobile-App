@@ -38,6 +38,9 @@ class Payment extends Component {
             tokenId: response.tokenId,
             amount: 500,
           }),
+        })
+        .then(response=>{
+          alert("Payment Successful!")
         });
       })
       .catch(error => {
