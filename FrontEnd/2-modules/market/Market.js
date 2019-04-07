@@ -12,7 +12,7 @@ import {
 } from "react-native";
 import colors from "../../0-base/colors";
 import { connect } from "react-redux";
-import { NewCardPage } from "../stripe/Stripe";
+import  Payment from "../stripe/Stripe";
 import { doPurchaseModel } from "../moreImages/ducks";
 const { width, height } = Dimensions.get("window");
 
@@ -30,7 +30,7 @@ function Market({ products, myUserName, purchaseModel, modelBlacklist }) {
   const [showPurchaseScreen, setShowPurchaseScreen] = useState(false);
   if (showPurchaseScreen) return (
     <View>
-    <NewCardPage/>
+    <Payment/>
     </View>
     );
   return (
