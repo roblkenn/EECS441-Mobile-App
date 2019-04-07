@@ -9,16 +9,19 @@ import numpy as np
 dataset = DatumRepository().read()
 imageRepo = ImageRepository()
 
-x = np.array(len(dataset))
-y = np.array(len(dataset))
+x = []
+y = []
 
 for i, item in enumerate(dataset):
 	blobName = item.blobName
 	imageBlob = imageRepo.read(blobName)
 	image = b64decode(imageBlob.content)
 
-	x[i] = tf.io.decode_jpeg(image, channels=3)
-	y[i] = [item.contrast, item.brightness, item.temperature, item.saturation]
+	x.append(tf.io.decode_image(image))
+	y.append([item.contrast, item.brightness, item.temperature, item.saturation])
+
+x = np.array(x)
+y = np.array(y)
 	
 preprocessor = tf.keras.preprocessing.image.ImageDataGenerator(
 	rotation_range=360,
@@ -29,4 +32,4 @@ preprocessor = tf.keras.preprocessing.image.ImageDataGenerator(
 	shear_range=30
 )
 
-awesomeDataset = preprocessor.flow(x, y)
+#awesomeDataset = preprocessor.flow(x, y)
