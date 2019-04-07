@@ -22,7 +22,7 @@ git clone https://github.com/roblkenn/EECS441-Mobile-App.git
 
 Go to the directory EECS-441-Mobile-App/FrontEnd
 ```
-cd EECS-441-Mobile-App/FrontEnd
+cd EECS441-Mobile-App/FrontEnd
 ```
 
 #### Setup Virtual Environment
@@ -53,6 +53,10 @@ npm install --save tipsi-stripe
 ```
 yarn add axios
 ```
+or
+```
+npm install axios
+```
 9. Install Cocoapods
 ```
 sudo gem install cocoapods --source http://rubygems.org
@@ -62,7 +66,7 @@ sudo gem install cocoapods --source http://rubygems.org
 Double check your current directory:
 ```
 $ pwd
-/.../EECS-441-Mobile-App/FrontEnd
+/.../EECS441-Mobile-App/FrontEnd
 ```
 
 Run npm on the terminal window:
@@ -72,8 +76,8 @@ npm start
 
 Open a second terminal and navigate to the same directory:
 ```
-$ cd /.../EECS-441-Mobile-App/FrontEnd
-
+$ cd /.../EECS441-Mobile-App/FrontEnd
+```
 Run react-native and start the application:
 ```
 react-native run-ios
