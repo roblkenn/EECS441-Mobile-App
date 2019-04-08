@@ -61,6 +61,10 @@ npm install axios
 ```
 sudo gem install cocoapods --source http://rubygems.org
 ```
+10. Navigate to Frontend/ios and run 
+```
+pod install
+```
 #### Run project
 
 Double check your current directory:
