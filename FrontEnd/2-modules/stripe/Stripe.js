@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import stripe from 'tipsi-stripe';
+import { connect } from "react-redux";
+
+const select = ({settings}) => ({
+  id: settings.id
+})
 
 stripe.setOptions({
   publishableKey: "pk_test_6kET7677UpCRMhY20DP7Fbag00l2dxiWry",
@@ -14,24 +19,39 @@ const theme = {
   accentColor: "orange",
   errorColor: "black",
 };
-export class NewCardPage extends Component {
+class Payment extends Component {
   componentDidMount() {
-    
     const options = {
       smsAutofillDisabled: true,
-      requiredBillingAddressFields: 'zip',
       theme
     };
     stripe.paymentRequestWithCardForm(options)
       .then(response => {
-        // Get the token from the response, and send to your server
+        fetch('https://styles-api.azurewebsites.net/purchase/', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            userId: this.props.id,
+            tokenId: response.tokenId,
+            amount: 500,
+          }),
+        })
+        .then(response=>{
+          alert("Payment Successful!")
+        });
       })
       .catch(error => {
-        // Handle error
-        alert("Error Reading Card")
+        alert(error)
       });
   }
   render() {
     return <View />
   }
 }
+
+export default connect(
+  select
+)(Payment);
