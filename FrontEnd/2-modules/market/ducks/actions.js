@@ -1,4 +1,4 @@
-import { UPLOADED_MODEL_TO_MARKET } from "./types";
+import { UPLOADED_MODEL_TO_MARKET, FETCHED_MARKET_ITEMS } from "./types";
 import Axios from "axios";
 
 export function doUploadModelToMarket({ title, price, description, username }) {
@@ -41,11 +41,25 @@ export function doUploadModelToMarket({ title, price, description, username }) {
       description,
       username,
       price: Math.round(price * 100)
-    }).then(r => console.log('response from backend', r));
+    }).then(r => console.log("response from backend", r));
 
     dispatch({
       type: UPLOADED_MODEL_TO_MARKET,
       payload: { model, username }
+    });
+  };
+}
+
+export function doFetchMarket() {
+  return dispatch => {
+    Axios.get("https://styles-api.azurewebsites.net/market/").then(r => {
+      console.log('hiii', r.data)
+      dispatch({
+        type: FETCHED_MARKET_ITEMS,
+        payload: {
+          products: r.data
+        }
+      });
     });
   };
 }

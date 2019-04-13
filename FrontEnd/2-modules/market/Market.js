@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Component } from "react";
 import {
   Alert,
@@ -12,8 +12,9 @@ import {
 } from "react-native";
 import colors from "../../0-base/colors";
 import { connect } from "react-redux";
-import  Payment from "../stripe/Stripe";
+import Payment from "../stripe/Stripe";
 import { doPurchaseModel } from "../moreImages/ducks";
+import { doFetchMarket } from "./ducks/actions";
 const { width, height } = Dimensions.get("window");
 
 const select = ({ market, settings }) => ({
@@ -23,16 +24,32 @@ const select = ({ market, settings }) => ({
 });
 
 const actions = {
-  purchaseModel: doPurchaseModel
+  purchaseModel: doPurchaseModel,
+  fetchMarket: doFetchMarket
 };
 
-function Market({ products, myUserName, purchaseModel, modelBlacklist }) {
+function Market({
+  products,
+  myUserName,
+  purchaseModel,
+  modelBlacklist,
+  fetchMarket
+}) {
   const [showPurchaseScreen, setShowPurchaseScreen] = useState(false);
-  if (showPurchaseScreen) return (
-    <View>
-    <Payment/>
-    </View>
+  const [pickedModel, setPickedModel] = useState(null);
+  useEffect(() => {
+    fetchMarket();
+  }, []);
+  if (showPurchaseScreen)
+    return (
+      <View>
+        <Payment
+          goBack={setShowPurchaseScreen}
+          purchaseModel={() => purchaseModel(pickedModel)}
+        />
+      </View>
     );
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Marketplace</Text>
@@ -41,6 +58,7 @@ function Market({ products, myUserName, purchaseModel, modelBlacklist }) {
         scrollEnabled={true}
       >
         {products.map(product => {
+          console.log(product)
           const inBlacklist =
             modelBlacklist.filter(blackModel => blackModel.id === product.id)
               .length > 0;
@@ -53,52 +71,12 @@ function Market({ products, myUserName, purchaseModel, modelBlacklist }) {
               {product.username !== myUserName && (
                 <Button
                   onPress={() => {
-                    Alert.alert("Purchase", "Confirm purchase?", [
-                      {
-                        text: "Cancel",
-                        onPress: () => console.log("Cancelled"),
-                        style: "cancel"
-                      },
-                      {
-                        text: "Buy",
-                        onPress: () => {
-                          purchaseModel(product);
-                          setShowPurchaseScreen(true);
-                        }
-                      }
-                    ]);
+                    setPickedModel(product);
+                    setShowPurchaseScreen(true);
                   }}
-                  title={product.price}
+                  title={product.price.toString()}
                 />
               )}
-              {/* <View style={{ flexDirection: "row" }}>
-              <Image
-                style={{ width: 115, height: 100, marginRight: 5 }}
-                source={{
-                  uri:
-                    "https://static1.squarespace.com/static/5867aa75893fc0dff9ee6386/5b1024571ae6cf8146094bfb/5b1024890e2e72380d363c1b/1527784599268/8C9A5433.jpg?format=2500w"
-                }}
-              />
-              <Image
-                style={{ width: 115, height: 100, marginRight: 5 }}
-                source={{
-                  uri:
-                    "https://static1.squarespace.com/static/5867aa75893fc0dff9ee6386/5b1024571ae6cf8146094bfb/5b1024890e2e72380d363c1b/1527784599268/8C9A5433.jpg?format=2500w"
-                }}
-              />
-              <Image
-                style={{
-                  width: 115,
-                  height: 100,
-                  marginRight: 5,
-                  marginBottom: 5
-                }}
-                source={{
-                  uri:
-                    "https://static1.squarespace.com/static/5867aa75893fc0dff9ee6386/5b1024571ae6cf8146094bfb/5b1024890e2e72380d363c1b/1527784599268/8C9A5433.jpg?format=2500w"
-                }}
-              />
-            </View> */}
               <View
                 style={{
                   borderBottomColor: "black",

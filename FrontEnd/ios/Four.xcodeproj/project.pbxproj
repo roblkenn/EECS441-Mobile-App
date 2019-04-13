@@ -26,6 +26,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
+		19682139225BAEA2002DD276 /* TPSStripe in Resources */ = {isa = PBXBuildFile; fileRef = 19682109225BAEA2002DD276 /* TPSStripe */; };
 		19F124C12249281B0003A2B3 /* libRCTCameraRoll.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F12498224927AF0003A2B3 /* libRCTCameraRoll.a */; };
 		234EC403530446B89A89F937 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 516FC84786904D7FAFF425D5 /* FontAwesome5_Solid.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -441,6 +442,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Four/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Four/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		19682109225BAEA2002DD276 /* TPSStripe */ = {isa = PBXFileReference; lastKnownFileType = folder; name = TPSStripe; path = "../node_modules/tipsi-stripe/ios/TPSStripe"; sourceTree = "<group>"; };
 		19F1248E224927AF0003A2B3 /* RCTCameraRoll.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTCameraRoll.xcodeproj; path = "../node_modules/react-native/Libraries/CameraRoll/RCTCameraRoll.xcodeproj"; sourceTree = "<group>"; };
 		1B5A77CECE0245D8B6FD6230 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		1D424C9EBDB28FC625374B59 /* Pods-Four-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Four-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Four-tvOSTests/Pods-Four-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -636,6 +638,7 @@
 		13B07FAE1A68108700A75B9A /* Four */ = {
 			isa = PBXGroup;
 			children = (
+				19682109225BAEA2002DD276 /* TPSStripe */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -1457,6 +1460,7 @@
 				83DA4C6A6C1D44DEA949A305 /* Foundation.ttf in Resources */,
 				E998B22B6CB44905BF78B1CC /* Ionicons.ttf in Resources */,
 				901EC525E60F47999AE02EDB /* MaterialCommunityIcons.ttf in Resources */,
+				19682139225BAEA2002DD276 /* TPSStripe in Resources */,
 				A546C043835F427FACE85B4B /* MaterialIcons.ttf in Resources */,
 				7960E4B12D69472D8FD194CD /* Octicons.ttf in Resources */,
 				445910E062A14CD8A50D7393 /* SimpleLineIcons.ttf in Resources */,
