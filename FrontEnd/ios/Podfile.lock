@@ -167,6 +167,7 @@ PODS:
   - nanopb/encode (0.3.901)
   - Protobuf (3.7.0)
   - Stripe (14.0.0)
+  - TensorFlow-experimental (1.1.1)
 
 DEPENDENCIES:
   - Firebase/Auth
@@ -178,6 +179,7 @@ DEPENDENCIES:
   - Firebase/Performance
   - Firebase/Storage
   - Stripe (~> 14.0.0)
+  - TensorFlow-experimental
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -207,6 +209,7 @@ SPEC REPOS:
     - nanopb
     - Protobuf
     - Stripe
+    - TensorFlow-experimental
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: 2a230d9cd93e7ce39916044f645cebb31f37dde6
@@ -235,7 +238,8 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   Stripe: db29ad197c74aca6fb981e4e8355cf7ebd0fca5a
+  TensorFlow-experimental: c38ed2a43acaa2d42ce4174ac076efaa76e26a12
 
-PODFILE CHECKSUM: ba4e0e0f0072a0a5c8e56f612016bb3afc5df9e9
+PODFILE CHECKSUM: f62152fe6c605e7b190dcdbb527ac2c91afd89f0
 
 COCOAPODS: 1.6.1

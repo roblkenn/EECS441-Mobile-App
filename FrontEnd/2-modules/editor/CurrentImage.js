@@ -19,6 +19,7 @@ import { WhiteText } from "../../3-utils/Text";
 import SaveableImage from "./SaveableImage";
 import { DownloadIcon, CompareIcon } from "../../3-utils/Icons";
 import { doStartCompare, doStopCompare } from "./ducks/actions";
+import styled from "styled-components/native";
 
 const select = ({ editor }) => ({
   src: editor.currentImage,
@@ -34,7 +35,7 @@ const select = ({ editor }) => ({
 const actions = {
   startCompare: doStartCompare,
   stopCompare: doStopCompare
-}
+};
 
 function CurrentImage({
   src,
@@ -46,7 +47,8 @@ function CurrentImage({
   temporaryValue,
   showCompare,
   startCompare,
-  stopCompare
+  stopCompare,
+  setHandleAutoEdit
 }) {
   // determines whether to preview an edit value
   // or use the saved one
@@ -58,6 +60,13 @@ function CurrentImage({
   let [imageWidth, setImageWidth] = useState(null);
   let [imageHeight, setImageHeight] = useState(null);
   let [exportImage, setExportImage] = useState({ callback: null });
+
+  const matrix = concatColorMatrices([
+    saturate(useSliderValue("saturation", saturationValue)),
+    contrast(useSliderValue("contrast", contrastValue)),
+    temperature(useSliderValue("temperature", temperatureValue)),
+    brightness(useSliderValue("brightness", brightnessValue))
+  ]);
 
   // determines size of image depending on if its longest
   // edge is its width or height
@@ -79,64 +88,36 @@ function CurrentImage({
   }, [src]);
 
   return (
-    <View style={styles.container}>
-      <ColorMatrix
-        matrix={concatColorMatrices([
-          saturate(useSliderValue("saturation", saturationValue)),
-          contrast(useSliderValue("contrast", contrastValue)),
-          temperature(useSliderValue("temperature", temperatureValue)),
-          brightness(useSliderValue("brightness", brightnessValue))
-        ])}
-        style={styles.matrix}
-      >
-        <View>
-          {src && (
-            <SaveableImage
-              src={src}
-              imageWidth={imageWidth}
-              imageHeight={imageHeight}
-              onExport={setExportImage}
-            />
-          )}
-          {!src && (
-            <View>
-              <WhiteText>swipe right to import an image</WhiteText>
-            </View>
-          )}
-        </View>
+    <Container>
+      {/* Image */}
+      <ColorMatrix matrix={matrix} style={styles.matrix}>
+        {src ? (
+          <SaveableImage
+            src={src}
+            imageWidth={imageWidth}
+            imageHeight={imageHeight}
+            onExport={setExportImage}
+            onAutoEdit={setHandleAutoEdit}
+          />
+        ) : (
+          <WhiteText>swipe right to import an image</WhiteText>
+        )}
       </ColorMatrix>
+
+      {/* On save */}
       {exportImage.callback && (
-        <TouchableOpacity
-          onPress={exportImage.callback}
-          style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            backgroundColor: "rgb(255,165,0)",
-            paddingVertical: 10,
-            paddingHorizontal: 16
-          }}
-        >
+        <Download>
           <DownloadIcon style={{ color: "white" }} />
-        </TouchableOpacity>
+        </Download>
       )}
+
+      {/* Preview original */}
       {showCompare && (
-        <TouchableOpacity
-          onPressIn={startCompare}
-          onPressOut={stopCompare}
-          style={{
-            position: "absolute",
-            right: 0,
-            top: 0,
-            backgroundColor: "rgba(0,0,0,0.4)",
-            paddingVertical: 10,
-            paddingHorizontal: 16
-          }}
-        >
+        <Compare onPressIn={startCompare} onPressOut={stopCompare}>
           <CompareIcon style={{ color: "white" }} />
-        </TouchableOpacity>
+        </Compare>
       )}
-    </View>
+    </Container>
   );
 }
 
@@ -146,11 +127,6 @@ export default connect(
 )(CurrentImage);
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignSelf: "stretch"
-  },
-
   matrix: {
     flex: 1,
     alignSelf: "stretch",
@@ -160,3 +136,25 @@ const styles = StyleSheet.create({
     alignItems: "center"
   }
 });
+
+const Container = styled.View`
+  flex: 1;
+  align-self: stretch;
+`;
+
+const AnchorButton = styled.TouchableOpacity`
+  position: absolute;
+  background-color: rgb(255, 165, 0);
+  padding-vertical: 10;
+  padding-horizontal: 16;
+`;
+
+const Download = styled(AnchorButton)`
+  left: 0;
+  top: 0;
+`;
+
+const Compare = styled(AnchorButton)`
+  right: 0;
+  top: 0;
+`;

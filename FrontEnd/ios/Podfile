@@ -14,7 +14,8 @@ target 'Four' do
   pod 'Firebase/Firestore'
   pod 'Firebase/Messaging'
   pod 'Firebase/Performance'
-  pod 'Firebase/Storage'	
+  pod 'Firebase/Storage'
+  pod 'TensorFlow-experimental'	
 
 end
 

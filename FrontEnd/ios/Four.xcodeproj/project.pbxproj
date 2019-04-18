@@ -54,6 +54,7 @@
 		8CC0038FB26946DA85E1DFC2 /* libRNImgToBase64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C0D61277DF14E8EB7BDAC28 /* libRNImgToBase64.a */; };
 		8D6B3DEF059C4019A31D653A /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DC159440760F4AD2AF2124D6 /* FontAwesome5_Brands.ttf */; };
 		901EC525E60F47999AE02EDB /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 069C086B62FC488DB14A700A /* MaterialCommunityIcons.ttf */; };
+		93D990A12376433C8B6CBBFF /* libRNTensorflow.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD01D828924E4EA9A0F02237 /* libRNTensorflow.a */; };
 		9AA899CD916F442ABF6FDD87 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 709FD8AD59D2459296D61030 /* libRNVectorIcons.a */; };
 		A546C043835F427FACE85B4B /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 55FD571C2C60417FACB56A16 /* MaterialIcons.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
@@ -161,6 +162,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNReactNativeHapticFeedback;
+		};
+		19D0FEE622679B3F00DE1C7C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 59DBE4D1280A47AF9DB09DCF /* RNTensorflow.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNTensorflow;
 		};
 		19F12497224927AF0003A2B3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -457,6 +465,7 @@
 		516FC84786904D7FAFF425D5 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		551915E425A74709A54262B3 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		55FD571C2C60417FACB56A16 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		59DBE4D1280A47AF9DB09DCF /* RNTensorflow.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNTensorflow.xcodeproj; path = "../node_modules/react-native-tensorflow/ios/RNTensorflow.xcodeproj"; sourceTree = "<group>"; };
 		5C243DF64ECE4213AE0AB4F5 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		609332CA904B4C7CB70F2946 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
@@ -482,6 +491,7 @@
 		D2AAE4E14B2E9B436D82F4E3 /* Pods-Four.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Four.release.xcconfig"; path = "Target Support Files/Pods-Four/Pods-Four.release.xcconfig"; sourceTree = "<group>"; };
 		D9CB0D14A996488287AC43A1 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		DC159440760F4AD2AF2124D6 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		DD01D828924E4EA9A0F02237 /* libRNTensorflow.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNTensorflow.a; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		ED79A6D87D7563CC2406A464 /* libPods-Four.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Four.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -523,6 +533,7 @@
 				40689A1FEB394EE99319F6AB /* libRNFS.a in Frameworks */,
 				06F82198B34F4B2580F6CCD7 /* libTPSStripe.a in Frameworks */,
 				F7B157133FC9C68B9CE179EA /* libPods-Four.a in Frameworks */,
+				93D990A12376433C8B6CBBFF /* libRNTensorflow.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -698,6 +709,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		19D0FEE322679B3F00DE1C7C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				19D0FEE722679B3F00DE1C7C /* libRNTensorflow.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		19F1248F224927AF0003A2B3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -717,6 +736,7 @@
 				7C0D61277DF14E8EB7BDAC28 /* libRNImgToBase64.a */,
 				C01660DFF14042E995050063 /* libRNFS.a */,
 				7549800FFB024AC3B902EAC8 /* libTPSStripe.a */,
+				DD01D828924E4EA9A0F02237 /* libRNTensorflow.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -821,6 +841,7 @@
 				9B050C60AE7F45C3BC2E92B3 /* RNImgToBase64.xcodeproj */,
 				CC48488DB2FE45638DDF4F33 /* RNFS.xcodeproj */,
 				061786D258404CDF9A684594 /* TPSStripe.xcodeproj */,
+				59DBE4D1280A47AF9DB09DCF /* RNTensorflow.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1081,6 +1102,10 @@
 					ProjectRef = 83ACB51D51C34850B5767301 /* RNReactNativeHapticFeedback.xcodeproj */;
 				},
 				{
+					ProductGroup = 19D0FEE322679B3F00DE1C7C /* Products */;
+					ProjectRef = 59DBE4D1280A47AF9DB09DCF /* RNTensorflow.xcodeproj */;
+				},
+				{
 					ProductGroup = 19F124D022492D420003A2B3 /* Products */;
 					ProjectRef = 1B5A77CECE0245D8B6FD6230 /* RNVectorIcons.xcodeproj */;
 				},
@@ -1186,6 +1211,13 @@
 			fileType = archive.ar;
 			path = libRNReactNativeHapticFeedback.a;
 			remoteRef = 197D5956224A7B800061015B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		19D0FEE722679B3F00DE1C7C /* libRNTensorflow.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNTensorflow.a;
+			remoteRef = 19D0FEE622679B3F00DE1C7C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		19F12498224927AF0003A2B3 /* libRCTCameraRoll.a */ = {
@@ -1670,12 +1702,14 @@
 					"$(SRCROOT)/../node_modules/react-native-image-base64/ios",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/tipsi-stripe/ios/TPSStripe",
+					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
 				INFOPLIST_FILE = FourTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1709,12 +1743,14 @@
 					"$(SRCROOT)/../node_modules/react-native-image-base64/ios",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/tipsi-stripe/ios/TPSStripe",
+					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
 				INFOPLIST_FILE = FourTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1751,6 +1787,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-base64/ios",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/tipsi-stripe/ios/TPSStripe",
+					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
 				INFOPLIST_FILE = Four/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1783,6 +1820,7 @@
 					"$(SRCROOT)/../node_modules/react-native-image-base64/ios",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/tipsi-stripe/ios/TPSStripe",
+					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
 				INFOPLIST_FILE = Four/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1821,11 +1859,13 @@
 					"$(SRCROOT)/../node_modules/react-native-image-base64/ios",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/tipsi-stripe/ios/TPSStripe",
+					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
 				INFOPLIST_FILE = "Four-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1869,11 +1909,13 @@
 					"$(SRCROOT)/../node_modules/react-native-image-base64/ios",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/tipsi-stripe/ios/TPSStripe",
+					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
 				INFOPLIST_FILE = "Four-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1916,11 +1958,13 @@
 					"$(SRCROOT)/../node_modules/react-native-image-base64/ios",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/tipsi-stripe/ios/TPSStripe",
+					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
 				INFOPLIST_FILE = "Four-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1963,11 +2007,13 @@
 					"$(SRCROOT)/../node_modules/react-native-image-base64/ios",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
 					"$(SRCROOT)/../node_modules/tipsi-stripe/ios/TPSStripe",
+					"$(SRCROOT)/../node_modules/react-native-tensorflow/ios",
 				);
 				INFOPLIST_FILE = "Four-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
