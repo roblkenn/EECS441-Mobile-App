@@ -100,7 +100,7 @@ function CurrentImage({
           )}
           {!src && (
             <View>
-              <WhiteText>swipe right to import an image</WhiteText>
+              <WhiteText>swipe left to import an image</WhiteText>
             </View>
           )}
         </View>
